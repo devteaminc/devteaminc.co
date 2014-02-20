@@ -2,6 +2,13 @@
   "name": "devteaminc-website",
   "version": "0.0.1",
   "devDependencies": {
-    "gulp": "~3.5.2"
+    "gulp": "~3.5.2",
+    "gulp-util": "~2.2.14",
+    "gulp-sass": "~0.7.0",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-imagemin": "~0.1.5",
+    "gulp-concat": "~2.1.7",
+    "gulp-notify": "~1.0.0-beta"
   }
 }
