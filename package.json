@@ -1,0 +1,7 @@
+{
+  "name": "devteaminc-website",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "~3.5.2"
+  }
+}
