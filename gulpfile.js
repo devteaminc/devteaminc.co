@@ -1,6 +1,6 @@
 /**
- * DevTeam Inc. Gulpfile
- * =====================
+ * DevTeam Inc. Gulpfile V1
+ * ========================
  * By Mike Mitchell | http://devteaminc.co/
  */
 
@@ -18,6 +18,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var imagemin = require('gulp-imagemin');
+var svgmin = require('gulp-svgmin');
 var uglify = require('gulp-uglify');
 var rev = require('gulp-rev');
 var usemin = require('gulp-usemin');
@@ -100,11 +101,9 @@ gulp.task( 'buildUsemin', function () {
 
 	return gulp.src( path.dev.root + '/*.html' )
 		.pipe( usemin({
+			html: [],
 			js: [ uglify(), rev() ],
-			css: [ rev() ],
-			options: {
-				assetsDirs: [ path.dev.root ]
-			}
+			css: [ rev() ]
 		}))
 		.pipe( gulp.dest( path.build.root ))
 	;
@@ -122,7 +121,22 @@ gulp.task( 'buildImages', function () {
 
 	return gulp.src( path.dev.img + '/*' )
 		.pipe( imagemin() )
-		.pipe( rev() )
+		.pipe( gulp.dest( path.build.img ))
+	;
+
+});
+
+
+/**
+ * Gulp Task
+ * =========
+ * Optimize SVG Images
+ */
+
+gulp.task( 'optimizeSVG', function () {
+
+	return gulp.src( path.dev.img + '/*.svg' )
+		.pipe( svgmin() )
 		.pipe( gulp.dest( path.build.img ))
 	;
 
@@ -161,7 +175,7 @@ gulp.task( 'watch', function () {
 
 gulp.task( 'build', function () {
 
-	runSequence( 'buildClean', 'buildStyles', 'buildImages', 'buildUsemin' );
+	runSequence( 'buildClean', [ 'buildStyles', 'buildImages', 'optimizeSVG' ], 'buildUsemin' );
 
 });
 
@@ -172,4 +186,4 @@ gulp.task( 'build', function () {
  * Default Task
  */
 
-gulp.task( 'default', [ 'build' ] );
+gulp.task( 'default', [ 'watch' ] );
