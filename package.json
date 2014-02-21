@@ -12,6 +12,7 @@
     "gulp-notify": "~1.0.0-beta",
     "gulp-rev": "~0.2.1",
     "gulp-usemin": "~0.3.2",
-    "gulp-uglify": "~0.2.1"
+    "gulp-uglify": "~0.2.1",
+    "gulp-clean": "~0.2.4"
   }
 }

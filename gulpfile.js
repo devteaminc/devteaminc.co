@@ -22,6 +22,7 @@ var gulpConcat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rev = require('gulp-rev');
 var usemin = require('gulp-usemin');
+var clean = require('gulp-clean');
 var notify = require('gulp-notify');
 
 
@@ -59,36 +60,26 @@ var path = {
 /**
  * Gulp Task
  * =========
- * Compile Sass to CSS
- */
-
-gulp.task( 'compileSass', function () {
-
-	gulp.src( path.dev.sass + '/*.scss' )
-		.pipe( sass() )
-		.pipe( gulp.dest( path.dev.css ) )
-	;
-
-});
-
-
-/**
- * Gulp Task
- * =========
- * Scripts
+ * Build
  */
 
 gulp.task( 'build', function () {
 
+	gulp.src( path.build.root, { read: false } )
+		.pipe( clean() )
+	;
+
+	// Compile Sass to CSS, add in vendor prefixes and minify
 
 	gulp.src( path.dev.sass + '/*.scss' )
 		.pipe( sass() )
 		.pipe( autoprefixer( 'last 2 version' ))
-		.pipe( minifycss )
-		.pipe( gulp.dest( path.css ))
+		.pipe( minifycss() )
+		.pipe( gulp.dest( path.build.css ))
 	;
 
-	// Concat JS, add rev for cache busting
+	// Concat JavaScript, minify JavaScript and do some cache busting.
+
 	gulp.src('./development/*.html')
 		.pipe( usemin({
 			js: [ uglify(), rev() ],
@@ -106,4 +97,4 @@ gulp.task( 'build', function () {
  * Default Task
  */
 
-gulp.task( 'default', [ 'usemin' ] );
+gulp.task( 'default', [ 'build' ] );
