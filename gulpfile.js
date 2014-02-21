@@ -82,7 +82,7 @@ gulp.task( 'usemin', function () {
 
 	gulp.src('./development/*.html')
 		.pipe( usemin({
-			js: [ rev() ]
+			js: [ uglify(), rev() ]
 		}))
 		.pipe( gulp.dest( path.build.root ))
 	;
