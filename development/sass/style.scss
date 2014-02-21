@@ -2,3 +2,10 @@
 
 // Normalize, Resets & H5BP Defaults
 @import "modules/reset";
+
+// Modules
+@import "modules/typography";
+
+body {
+	@extend %base-typography;
+}

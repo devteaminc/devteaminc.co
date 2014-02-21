@@ -1,0 +1,14 @@
+// Font Size Variables
+
+$base-font-size: 16px;
+$header-font-size: 67px;
+
+%base-typography {
+	font-family: 'Varela Round', sans-serif;
+	font-size: $base-font-size;
+}
+
+%section-heading {
+	font-size:  $header-font-size;
+	text-transform: uppercase;
+}
