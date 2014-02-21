@@ -78,11 +78,21 @@ gulp.task( 'compileSass', function () {
  * Scripts
  */
 
-gulp.task( 'usemin', function () {
+gulp.task( 'build', function () {
 
+
+	gulp.src( path.dev.sass + '/*.scss' )
+		.pipe( sass() )
+		.pipe( autoprefixer( 'last 2 version' ))
+		.pipe( minifycss )
+		.pipe( gulp.dest( path.css ))
+	;
+
+	// Concat JS, add rev for cache busting
 	gulp.src('./development/*.html')
 		.pipe( usemin({
-			js: [ uglify(), rev() ]
+			js: [ uglify(), rev() ],
+			css: [ rev() ]
 		}))
 		.pipe( gulp.dest( path.build.root ))
 	;
