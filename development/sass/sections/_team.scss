@@ -1,0 +1,88 @@
+// Team Section
+
+.team-members__list {
+	@extend %list-reset;
+	max-width: 960px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.team-members__list-item {
+	float: left;
+	width: 320px;
+}
+
+@media (max-width: 959px) {
+	.team-members__list-item {
+		display: inline-block;
+		float: none;
+	}
+}
+
+.team-member__portrait {
+	width: 280px;
+	height: 280px;
+	border-radius: 100%;
+	margin: 20px;
+	display: block;
+	background: $lighter-grey no-repeat;
+	background-size: 280px;
+
+	&.team-member__portrait--paul {
+		background-image: url('/images/team-portrait-paul.png');
+		background-color: $orange;
+	}
+
+	&.team-member__portrait--rob {
+		background-image: url('/images/team-portrait-rob.png');
+		background-color: $red;
+	}
+
+	&.team-member__portrait--mike {
+		background-image: url('/images/team-portrait-mike.png');
+		background-color: $purple;
+	}
+
+	&.team-member__portrait--john {
+		background-image: url('/images/team-portrait-john.png');
+		background-color: $green;
+	}
+
+	&.team-member__portrait--chris {
+		background-image: url('/images/team-portrait-chris.png');
+		background-color: $aqua;
+	}
+
+	&.team-member__portrait--empty {
+		background-image: url('/images/team-portrait-empty.png');
+	}
+
+}
+
+.team-member__name {
+	@extend %sub-title;
+}
+
+.team-member__title {
+	color: $orange;
+	font-size: $small-font-size;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.team-member__contact {
+	color: $light-grey;
+	margin: 0;
+	display: block;
+	text-decoration: none;
+
+	transition: ease-in-out $animation-fast;
+
+	&:hover,
+	&:focus {
+		letter-spacing: 2px;
+		color: $medium-grey;
+		outline: none;
+	}
+
+}

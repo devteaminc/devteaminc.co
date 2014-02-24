@@ -1,0 +1,91 @@
+// Intro Section
+
+.intro {
+	background: linear-gradient(
+		to bottom,
+		rgb(154, 212, 234) 30%,
+		rgb(194, 226, 201) 60%,
+		rgb(238, 217, 150) 80%,
+		rgb(241, 108, 90) 95%,
+		rgb(237, 55, 100) 100%
+	) fixed;
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 56px;
+		width: 100%;
+		z-index: 10;
+		background: url('/images/divider-white.png');
+	}
+}
+
+.section__title--intro {
+	height: 190px;
+	width: 400px;
+	text-indent: -9999px;
+	overflow: hidden;
+	background: url('/images/dev-team-inc-logo.svg') no-repeat center center;
+	background-size: contain;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 15;
+	margin-top: -95px;
+	margin-left: -200px;
+
+	transition: height ease-in-out $animation-medium, width ease-in-out $animation-medium, margin ease-in-out $animation-medium;
+
+	
+	-webkit-backface-visibility: hidden; 
+	   -moz-backface-visibility: hidden;
+	    -ms-backface-visibility: hidden;
+	        backface-visibility: hidden;
+
+	&.section__title:after {
+		display: none;
+		content: none;
+	}
+
+}
+
+@media (max-width: 639px) {
+	.section__title--intro {
+		width: 200px;
+		height: 95px;
+		margin-left: -100px;
+		margin-top: -47.5px;
+	}
+}
+
+.intro-illustration {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.intro-illustration__mountains {
+	background: url('/images/intro-illustration-mountains.png') center;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+.intro-illustration__contrails {
+	background: url('/images/intro-illustration-contrails.png') center fixed;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+}

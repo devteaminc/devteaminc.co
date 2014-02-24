@@ -1,11 +1,74 @@
+// ==============================================
 // DevTeam Inc. Sass V1
+// ==============================================
 
+// ==============================================
+// Colour Variables
+// ==============================================
+
+$dark-grey: #252525;
+$medium-grey: #696969;
+$light-grey: #b4b4b4;
+$lighter-grey: #eaeaea;
+$light-gold: #e2ddd5;
+$orange: #ffac42;
+$red: #fb5555;
+$orange: #ffac42;
+$green: #cae0a8;
+$purple: #7d6ddb;
+$aqua: #9bf1d4;
+
+// ==============================================
+// Font Size Variables
+// ==============================================
+
+$base-font-size: 16px;
+$large-font-size: 68px;
+$medium-font-size: 30px;
+$small-font-size: 12px;
+
+// ==============================================
+// Animation Speed Variables
+// ==============================================
+
+$animation-fast: 100ms;
+$animation-medium: 200ms;
+$animation-slow: 400ms;
+
+// ==============================================
 // Normalize, Resets & H5BP Defaults
+// ==============================================
+// 
 @import "modules/reset";
 
+// ==============================================
 // Modules
-@import "modules/typography";
+// ==============================================
 
-body {
-	@extend %base-typography;
+@import "modules/structure";
+@import "modules/typography";
+@import "modules/navigation";
+@import "modules/header";
+
+// ==============================================
+// Sections
+// ==============================================
+
+@import "sections/intro";
+@import "sections/team";
+@import "sections/about";
+@import "sections/contact";
+
+.cf:before,
+.cf:after {
+	content: " ";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	*zoom: 1;
 }

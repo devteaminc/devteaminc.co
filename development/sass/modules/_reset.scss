@@ -2,16 +2,6 @@
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
 html,
 button,
 input,
@@ -82,4 +72,12 @@ fieldset {
 
 textarea {
 	resize: vertical;
+}
+
+// List Reset
+
+%list-reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

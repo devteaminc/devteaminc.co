@@ -22,118 +22,142 @@
 
 	</head>
 	<body>
-		<a id="top" name="top"></a>
-		<nav>
+		<div class="main-wrapper" role="banner">
+			<a id="top" name="top"></a>
+			<header class="main-header">
 
-			<a href="/">DevTeam Inc.</a>
-			
-			<ul>
-				<li><a href="#team">Team</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-
-		</nav>
-
-		<section>
-
-			<h1>DevTeam Inc.</h1>
-
-		</section>
-
-		<section>
-			<a id="team" name="team"></a>
-			<h2>Team</h2>
-
-			<ul>
-				<li>
-					<h3>Paul</h3>
-					<p>Designer &amp; Front End Developer</p>
-					<a href="mailto:paul@devteaminc.co">paul@devteaminc.co</a>
-					<a href="https://twitter.com/paulhillier" target="_blank">@paulhillier</a>
-				</li>
-
-				<li>
-					<h3>Rob</h3>
-					<p>Developer</p>
-					<a href="mailto:rob@devteaminc.co">rob@devteaminc.co</a>
-					<a href="https://twitter.com/robjmills" target="_blank">@robjmills</a>
-				</li>
-
-				<li>
-					<h3>Mike</h3>
-					<p>Designer &amp; Front End Developer</p>
-					<a href="mailto:mike@devteaminc.co">mike@devteaminc.co</a>
-					<a href="https://twitter.com/innernets" target="_blank">@innernets</a>
-				</li>
-
-				<li>
-					<h3>John</h3>
-					<p>Designer &amp; Front End Developer</p>
-					<a href="mailto:john@devteaminc.co">john@devteaminc.co</a>
-					<a href="https://twitter.com/John_Byrne" target="_blank">@John_Byrne</a>
-				</li>
-
-				<li>
-					<h3>Chris</h3>
-					<p>Designer &amp; Front End Developer</p>
-					<a href="mailto:chris@devteaminc.co">chris@devteaminc.co</a>
-					<a href="https://twitter.com/colouryum" target="_blank">@colouryum</a>
-				</li>
-
-				<li>
-					<h3>You?</h3>
-					<p>Available</p>
-					<a href="mailto:hello@devteaminc.co">hello@devteaminc.co</a>
-					<a href="https://twitter.com/devteaminc" target="_blank">@devteaminc</a>
-				</li>
-			</ul>
-
-		</section>
-
-		<section>
-			<a id="about" name="about"></a>
-			<h2>About</h2>
-
-			<p>We are a small team of talented and passionate web artisans, always on the lookout for interesting and challenging projects to push the web forward.</p>
-			<p>Cooking up some tasty internets&hellip;</p>
-
-		</section>
-
-		<section>
-			<a id="contact" name="contact"></a>
-			<h2>Contact</h2>
-
-			<ul>
-				<li>
-					<a href="https://mapsengine.google.com/map/edit?mid=znap4IiqjkF8.kkYY7Llh1U2s" target="_blank">DevTeam Inc, St. Nicholas House, 31-34 High Street, Bristol, BS1 2AW</a>
-				</li>
-
-				<li>(+44) 20 7099 1002</li>
+				<a class="main-header__logo" href="/">DevTeam Inc.</a>
 				
-				<li>
-					<a href="mailto:hello@devteaminc.co">hello@devteaminc.co</a>
-				</li>
-				
-				<li>
-					<a href="https://twitter.com/devteaminc" target="_blank">@devteaminc</a>
-				</li>
-				
-				<li>
-					<a href="https://facebook.com/devteaminc" target="_blank">fb.com/devteaminc</a>
-				</li>
-				
-				<li>
-					<a href="https://instagram.com/devteaminc" target="_blank">@devteaminc</a>
-				</li>
-			</ul>
+				<nav class="main-navigation">
+					<ul class="main-navigation__list" role="navigation">
+						<li class="main-navigation__list-item"><a href="#team">Team</a></li>
+						<li class="main-navigation__list-item"><a href="#about">About</a></li>
+						<li class="main-navigation__list-item"><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
 
-			<p>Get in Touch or Follow Us</p>
+			</header>
 
-			<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-			<div id="map-canvas"></div>
+			<section class="intro" >
 
-		</section>
+				<h1 class="section__title section__title--intro">DevTeam Inc.</h1>
+				<div class="intro-illustration">
+					<div class="intro-illustration__mountains"></div>
+					<div class="intro-illustration__contrails"></div>
+				</div>
+
+			</section>
+
+			<section class="team">
+
+				<a id="team" name="team"></a>
+				<h2 class="section__title section__title--team">Team</h2>
+
+				<ul class="team-members__list">
+					<li class="team-members__list-item team-members__list-item--paul">
+						<i class="team-member__portrait team-member__portrait--paul"></i>
+						<h3 class="team-member__name">Paul</h3>
+						<p class="team-member__title">Designer &amp; Front End Developer</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:paul@devteaminc.co">paul@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/paulhillier" target="_blank">@paulhillier</a>
+					</li>
+
+					<li class="team-members__list-item team-members__list-item--rob">
+						<i class="team-member__portrait team-member__portrait--rob"></i>
+						<h3 class="team-member__name">Rob</h3>
+						<p class="team-member__title">Developer</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:rob@devteaminc.co">rob@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/robjmills" target="_blank">@robjmills</a>
+					</li>
+
+					<li class="team-members__list-item team-members__list-item--mike">
+						<i class="team-member__portrait team-member__portrait--mike"></i>
+						<h3 class="team-member__name">Mike</h3>
+						<p class="team-member__title">Designer &amp; Front End Developer</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:mike@devteaminc.co">mike@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/innernets" target="_blank">@innernets</a>
+					</li>
+
+					<li class="team-members__list-item team-members__list-item--john">
+						<i class="team-member__portrait team-member__portrait--john"></i>
+						<h3 class="team-member__name">John</h3>
+						<p class="team-member__title">Designer &amp; Front End Developer</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:john@devteaminc.co">john@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/John_Byrne" target="_blank">@John_Byrne</a>
+					</li>
+
+					<li class="team-members__list-item team-members__list-item--chris">
+						<i class="team-member__portrait team-member__portrait--chris"></i>
+						<h3 class="team-member__name">Chris</h3>
+						<p class="team-member__title">Designer &amp; Front End Developer</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:chris@devteaminc.co">chris@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/colouryum" target="_blank">@colouryum</a>
+					</li>
+
+					<li class="team-members__list-item team-members__list-item--empty">
+						<i class="team-member__portrait team-member__portrait--empty"></i>
+						<h3 class="team-member__name">You?</h3>
+						<p class="team-member__title">Available</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:hello@devteaminc.co">hello@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/devteaminc" target="_blank">@devteaminc</a>
+					</li>
+				</ul>
+
+			</section>
+
+			<section class="about">
+
+				<a id="about" name="about"></a>
+				<h2 class="section__title section__title--about">About</h2>
+
+				<p>We are a small team of talented and passionate web artisans, always on the lookout for interesting and challenging projects to push the web forward.</p>
+				<p>Cooking up some tasty internets&hellip;</p>
+
+			</section>
+
+			<section class="contact">
+
+				<a id="contact" name="contact"></a>
+				<h2 class="section__title section__title--contact">Contact</h2>
+				
+				<div class="contact-wrapper cf">
+					<div class="contact-information">
+						<ul>
+							<li>
+								<a href="https://mapsengine.google.com/map/edit?mid=znap4IiqjkF8.kkYY7Llh1U2s" target="_blank">DevTeam Inc, St. Nicholas House, 31-34 High Street, Bristol, BS1 2AW</a>
+							</li>
+
+							<li>(+44) 20 7099 1002</li>
+							
+							<li>
+								<a href="mailto:hello@devteaminc.co">hello@devteaminc.co</a>
+							</li>
+							
+							<li>
+								<a href="https://twitter.com/devteaminc" target="_blank">@devteaminc</a>
+							</li>
+							
+							<li>
+								<a href="https://facebook.com/devteaminc" target="_blank">fb.com/devteaminc</a>
+							</li>
+							
+							<li>
+								<a href="https://instagram.com/devteaminc" target="_blank">@devteaminc</a>
+							</li>
+						</ul>
+
+						<p>Get in Touch or Follow Us</p>
+					</div>
+
+					<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+					<div class="google-map" id="map-canvas"></div>
+
+				</div>
+
+			</section>
+
+			<a href="#top" id="scrollToTop" class="scroll-to-top"></a>
+		</div>
 
 		<!-- build:js scripts/scripts.js -->
 		<script src="scripts/vendor/jquery/dist/jquery.js"></script>

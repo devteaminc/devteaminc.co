@@ -1,0 +1,27 @@
+.main-header {
+
+	transition: background ease-in-out $animation-slow;
+
+	&.visible {
+		background: rgba(0,0,0,0.1);
+	}
+
+}
+
+.main-header__logo {
+	height: 35px;
+	width: 100px;
+	background: url('/images/dev-team-inc-logo.svg') no-repeat center top;
+	background-size: 100px;
+	text-indent: -9999px;
+	overflow: hidden;
+	margin: 0.25em 1em 0;
+	opacity: 0;
+
+	transition: opacity ease-in-out $animation-slow;
+
+	&.visible {
+		opacity: 1;
+	}
+
+}

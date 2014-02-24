@@ -1,0 +1,55 @@
+.main-navigation {
+	float: right;
+}
+
+.main-navigation__list {
+	@extend %list-reset;
+}
+
+.main-navigation__list-item {
+	float: left;
+
+	a {
+		color: #fff;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: ease-in-out $animation-fast;
+		padding: 1.25em 1.5em 1.25em 0;
+		display: block;
+	}
+
+	a:hover {
+		color: rgba(0,0,0,0.3);
+	}
+
+}
+
+.scroll-to-top {
+
+	width: 30px;
+	height: 30px;
+	display: block;
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+	background: url('/images/to-top-arrow.svg') no-repeat;
+	background-size: 60px;
+	z-index: 20;
+	opacity: 0;
+
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+
+	transition: opacity ease-in-out $animation-slow;
+
+	&:hover,
+	&:focus {
+		background-position: -30px 0;
+	}
+
+	&.visible {
+		opacity: 1;
+	}
+
+}

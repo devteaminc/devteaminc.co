@@ -318,14 +318,6 @@ td, th {
   padding: 0; }
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
 html, button, input, select, textarea {
   color: #222; }
 
@@ -378,8 +370,316 @@ fieldset {
 textarea {
   resize: vertical; }
 
+.main-navigation__list, .team-members__list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.main-wrapper, .intro {
+  float: left;
+  width: 100%;
+  height: 100%; }
+
+.team, .about, .contact {
+  float: left;
+  width: 100%; }
+
+html, body {
+  height: 100%; }
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: 20; }
+
+.main-header__logo {
+  float: left; }
+
+
+
+.team {
+  padding: 50px 0; }
+
+.about {
+  padding: 50px 0;
+  background: #eaeaea; }
+
+.contact {
+  padding: 50px 0; }
+
 body {
   font-family: 'Varela Round', sans-serif;
-  font-size: 16px; }
+  font-size: 16px;
+  color: #252525; }
+
+.section__title {
+  font-size: 68px;
+  text-transform: uppercase;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  margin: 0 0 50px; }
+
+.section__title.section__title:after {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 75px;
+  height: 5px;
+  background: #ffac42;
+  border-radius: 5px; }
+
+.team-member__name {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 0; }
 
 
+.section__title.section__title--about:after {
+  background: #fb5555; }
+.section__title.section__title--contact:after {
+  background: #cae0a8; }
+
+.main-navigation {
+  float: right; }
+
+
+.main-navigation__list-item {
+  float: left; }
+  .main-navigation__list-item a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: ease-in-out 100ms;
+    padding: 1.25em 1.5em 1.25em 0;
+    display: block; }
+  .main-navigation__list-item a:hover {
+    color: rgba(0, 0, 0, 0.3); }
+
+.scroll-to-top {
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background: url('/images/to-top-arrow.svg') no-repeat;
+  background-size: 60px;
+  z-index: 20;
+  opacity: 0;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transition: opacity ease-in-out 400ms; }
+  .scroll-to-top:hover, .scroll-to-top:focus {
+    background-position: -30px 0; }
+  .scroll-to-top.visible {
+    opacity: 1; }
+
+.main-header {
+  transition: background ease-in-out 400ms; }
+  .main-header.visible {
+    background: rgba(0, 0, 0, 0.1); }
+
+.main-header__logo {
+  height: 35px;
+  width: 100px;
+  background: url('/images/dev-team-inc-logo.svg') no-repeat center top;
+  background-size: 100px;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin: 0.25em 1em 0;
+  opacity: 0;
+  transition: opacity ease-in-out 400ms; }
+  .main-header__logo.visible {
+    opacity: 1; }
+
+.intro {
+  background: linear-gradient(to bottom, #9ad4ea 30%, #c2e2c9 60%, #eed996 80%, #f16c5a 95%, #ed3764 100%) fixed;
+  position: relative; }
+  .intro:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 56px;
+    width: 100%;
+    z-index: 10;
+    background: url('/images/divider-white.png'); }
+
+.section__title--intro {
+  height: 190px;
+  width: 400px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: url('/images/dev-team-inc-logo.svg') no-repeat center center;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  margin-top: -95px;
+  margin-left: -200px;
+  transition: height ease-in-out 200ms, width ease-in-out 200ms, margin ease-in-out 200ms;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden; }
+  .section__title--intro.section__title:after {
+    display: none;
+    content: none; }
+
+@media (max-width: 639px) {
+  .section__title--intro {
+    width: 200px;
+    height: 95px;
+    margin-left: -100px;
+    margin-top: -47.5px; } }
+
+.intro-illustration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.intro-illustration__mountains {
+  background: url('/images/intro-illustration-mountains.png') center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+
+.intro-illustration__contrails {
+  background: url('/images/intro-illustration-contrails.png') center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5; }
+
+.team-members__list {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center; }
+
+.team-members__list-item {
+  float: left;
+  width: 320px; }
+
+@media (max-width: 959px) {
+  .team-members__list-item {
+    display: inline-block;
+    float: none; } }
+
+.team-member__portrait {
+  width: 280px;
+  height: 280px;
+  border-radius: 100%;
+  margin: 20px;
+  display: block;
+  background: #eaeaea no-repeat;
+  background-size: 280px; }
+  .team-member__portrait.team-member__portrait--paul {
+    background-image: url('/images/team-portrait-paul.png');
+    background-color: #ffac42; }
+  .team-member__portrait.team-member__portrait--rob {
+    background-image: url('/images/team-portrait-rob.png');
+    background-color: #fb5555; }
+  .team-member__portrait.team-member__portrait--mike {
+    background-image: url('/images/team-portrait-mike.png');
+    background-color: #7d6ddb; }
+  .team-member__portrait.team-member__portrait--john {
+    background-image: url('/images/team-portrait-john.png');
+    background-color: #cae0a8; }
+  .team-member__portrait.team-member__portrait--chris {
+    background-image: url('/images/team-portrait-chris.png');
+    background-color: #9bf1d4; }
+  .team-member__portrait.team-member__portrait--empty {
+    background-image: url('/images/team-portrait-empty.png'); }
+
+
+.team-member__title {
+  color: #ffac42;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0; }
+
+.team-member__contact {
+  color: #b4b4b4;
+  margin: 0;
+  display: block;
+  text-decoration: none;
+  transition: ease-in-out 100ms; }
+  .team-member__contact:hover, .team-member__contact:focus {
+    letter-spacing: 2px;
+    color: #696969;
+    outline: none; }
+
+.about {
+  position: relative;
+  padding: 100px 0;
+  margin: 100px 0; }
+  .about:before {
+    content: '';
+    height: 56px;
+    width: 100%;
+    background: url('/images/divider-grey.png');
+    position: absolute;
+    left: 0;
+    top: -56px; }
+  .about:after {
+    content: '';
+    height: 56px;
+    width: 100%;
+    background: url('/images/divider-white.png');
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+
+.about p {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.5em 5em; }
+
+@media (max-width: 550px) {
+  .about p {
+    padding: 0.5em 2em; } }
+
+@media (max-width: 430px) {
+  .about p {
+    padding: 0.5em 1em; } }
+
+.contact-wrapper {
+  width: 960px;
+  margin: 0 auto 50px;
+  background: #e2ddd5;
+  border-radius: 10px; }
+
+.contact-information {
+  width: 480px;
+  float: left; }
+
+.google-map {
+  width: 480px;
+  height: 480px;
+  float: left; }
+
+.cf:before, .cf:after {
+  content: " ";
+  display: table; }
+
+.cf:after {
+  clear: both; }
+
+.cf {
+  *zoom: 1; }
