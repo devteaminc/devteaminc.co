@@ -158,7 +158,7 @@ gulp.task( 'watch', function () {
 		// Compile Sass to CSS
 
 		gulp.src( path.dev.sass +'/*.scss' )
-			.pipe( sass() )
+			.pipe( sass({ errLogToConsole: true }) )
 			.pipe( gulp.dest( path.dev.css ) )
 		;
 
