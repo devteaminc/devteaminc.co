@@ -55,6 +55,25 @@ $(window).on('scroll', function(){
 });
 
 // ==============================================
+// Responsive Menu
+// ==============================================
+
+(function(){
+
+	var menu = $('.main-navigation__list');
+	var menuLink = $('.main-navigation__list');
+	var buttonTemplate = '<a class="main-navigation__toggle-button" id="toggleNavMenu"></a>';
+
+	menu.after( buttonTemplate );
+
+	$(document).on( 'click', '#toggleNavMenu', function () {
+		menu.toggleClass('main-navigation__list--visible');
+		$(this).toggleClass('main-navigation__toggle-button--active');
+	});
+
+})();
+
+// ==============================================
 // Persistent Contact Information
 // ==============================================
 

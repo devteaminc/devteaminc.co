@@ -487,6 +487,42 @@ body {
   .scroll-to-top.visible {
     opacity: 1; }
 
+.js .main-navigation__toggle-button {
+  display: none; }
+
+@media (max-width: 959px) {
+  .js .main-navigation__list {
+    float: left; }
+  .js .main-navigation__toggle-button {
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 0.75em 0.75em 0 0;
+    border: none;
+    background: url('/images/navigation-menu-sprite.svg') no-repeat;
+    background-size: 120px; }
+    .js .main-navigation__toggle-button:hover, .js .main-navigation__toggle-button:focus {
+      background-position: -30px 0;
+      outline: none; }
+    .js .main-navigation__toggle-button.main-navigation__toggle-button--active {
+      background-position: -60px 0; }
+    .js .main-navigation__toggle-button.main-navigation__toggle-button--active:hover, .js .main-navigation__toggle-button.main-navigation__toggle-button--active:focus {
+      background-position: -90px 0; }
+  .js .main-navigation__list a {
+    visibility: hidden;
+    letter-spacing: -10px;
+    color: rgba(255, 255, 255, 0); }
+    .js .main-navigation__list a:hover, .js .main-navigation__list a:focus {
+      color: rgba(255, 255, 255, 0); }
+  .js .main-navigation__list--visible a {
+    visibility: visible;
+    letter-spacing: 0;
+    color: #fff; }
+    .js .main-navigation__list--visible a:hover, .js .main-navigation__list--visible a:focus {
+      color: rgba(0, 0, 0, 0.3); } }
+
 .main-header {
   transition: background ease-in-out 400ms; }
   .main-header.visible {

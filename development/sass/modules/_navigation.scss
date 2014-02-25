@@ -7,6 +7,7 @@
 }
 
 .main-navigation__list-item {
+
 	float: left;
 
 	a {
@@ -52,6 +53,78 @@
 
 	&.visible {
 		opacity: 1;
+	}
+
+}
+
+// =====================
+// Responsive Navigation
+// =====================
+
+
+
+.js .main-navigation__toggle-button {
+	display: none;
+}
+
+@media (max-width:959px) {
+
+	.js .main-navigation__list {
+		float: left;
+	}
+
+	.js .main-navigation__toggle-button {
+		cursor: pointer;
+		display: block;
+		float: left;
+		width: 30px;
+		height: 30px;
+		margin: 0.75em 0.75em 0 0;
+		border: none;
+		background: url('/images/navigation-menu-sprite.svg') no-repeat;
+		background-size: 120px;
+
+		&:hover,
+		&:focus {
+			background-position: -30px 0;
+			outline: none;
+		}
+
+		&.main-navigation__toggle-button--active {
+			background-position: -60px 0;
+		}
+
+		&.main-navigation__toggle-button--active:hover,
+		&.main-navigation__toggle-button--active:focus {
+			background-position: -90px 0;
+		}
+
+	}
+
+	.js .main-navigation__list a {
+		
+		visibility: hidden;
+		letter-spacing: -10px;
+		color: rgba(255,255,255,0);
+
+		&:hover,
+		&:focus {
+			color: rgba(255,255,255,0);
+		}
+
+	}
+
+	.js .main-navigation__list--visible a {
+		
+		visibility: visible;
+		letter-spacing: 0;
+		color: #fff;
+
+		&:hover,
+		&:focus {
+			color: rgba(0,0,0,0.3);
+		}
+
 	}
 
 }
