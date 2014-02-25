@@ -7,6 +7,7 @@ This is the source for our website on http://devteaminc.co.
 
 * [Node.js](http://nodejs.org/)
 * [Bower](http://bower.io/)
+* [Gulp](http://gulpjs.com/)
 
 ## Setting up
 
