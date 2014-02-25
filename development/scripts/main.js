@@ -35,18 +35,21 @@ $(window).on('scroll', function(){
 	(function(){
 
 		var headerVisible = false;
+		var scrollToTopButton = $('#scrollToTop');
+		var mainHeader = $('.main-header');
+		var mainLogo = $('.main-header__logo');
 
 		if ( currentPosition > 400 ) {
 
-			$('#scrollToTop').addClass('visible');
-			$('.main-header').addClass('visible');
-			$('.main-header__logo').addClass('visible');
+			scrollToTopButton.addClass('visible');
+			mainHeader.addClass('visible');
+			mainLogo.addClass('visible');
 
 		} else {
 
-			$('#scrollToTop').removeClass('visible');
-			$('.main-header').removeClass('visible');
-			$('.main-header__logo').removeClass('visible');
+			scrollToTopButton.removeClass('visible');
+			mainHeader.removeClass('visible');
+			mainLogo.removeClass('visible');
 
 		}
 
