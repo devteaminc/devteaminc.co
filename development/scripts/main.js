@@ -13,7 +13,7 @@ $(window).on('scroll', function(){
 		var introPanel = $('.intro');
 		var introHeight = introPanel.height();
 
-		if ( currentPosition <= introHeight ) {
+		if ( currentPosition <= introHeight  && !$('html').hasClass('touch') ) {
 
 			var offset = Math.round( currentPosition / 3 );
 
