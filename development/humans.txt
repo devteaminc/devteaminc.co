@@ -1,0 +1,15 @@
+/* TEAM */
+	 Paul: Designer and Frontend Developer
+	 Twitter: @paulhillier
+
+	 Rob: Developer
+	 Twitter: @robjmills
+
+	 Mike: Designer and Frontend Developer
+	 Twitter: @innernets
+
+	 John: Designer and Frontend Developer
+	 Twitter: @John_byrne
+
+	 Chris: Designer and Frontend Developer
+	 Twitter: @colouryum
