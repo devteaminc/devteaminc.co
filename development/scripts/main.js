@@ -60,15 +60,31 @@ $(window).on('scroll', function(){
 
 (function(){
 
+	// Cache our variables
 	var menu = $('.main-navigation__list');
 	var menuLink = $('.main-navigation__list');
-	var buttonTemplate = '<a class="main-navigation__toggle-button" id="toggleNavMenu"></a>';
+	var buttonTemplate = '<a class="main-navigation__toggle-button" id="toggleNavMenu" tabindex="1"></a>';
 
+	// Insert our toggle button
 	menu.after( buttonTemplate );
 
-	$(document).on( 'click', '#toggleNavMenu', function () {
-		menu.toggleClass('main-navigation__list--visible');
-		$(this).toggleClass('main-navigation__toggle-button--active');
+	// On click or keypress
+	$(document).on( 'click keypress', '#toggleNavMenu', function ( event ) {
+
+		// Prevent default action
+		event.preventDefault();
+
+		// If enter key, spacebar or click
+		if ( ( event.which == 13 || 32 ) || event.type === 'click' ) {
+
+			// Toggle menu as visible
+			menu.toggleClass('main-navigation__list--visible');
+
+			// Toggle button as active
+			$(this).toggleClass('main-navigation__toggle-button--active');
+
+		}
+
 	});
 
 })();
