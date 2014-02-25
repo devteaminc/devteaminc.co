@@ -7,7 +7,7 @@ This is the source for our website on http://devteaminc.co.
 
 * [Node.js](http://nodejs.org/)
 * [Bower](http://bower.io/)
-* [Gulp](http://gulpjs.com/)
+* [Gulp)(http://gulpjs.com/* ])
 
 ## Setting up
 
@@ -24,5 +24,7 @@ If you want to add in any additional JavaScript files to the project, add them i
 
 ## Deployment
 
-1. Create a build with Gulp.js: `gulp build`
+
+1. Commit and push local changes to Github
+2. Create a build with Gulp.js: `gulp build`
 2. Subtree Push to deploy: `git subtree push —prefix build origin build`
