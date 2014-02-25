@@ -1,8 +1,16 @@
 .contact-wrapper {
-	width: 960px;
+	max-width: 960px;
 	margin: 0 auto 50px;
 	background: $light-gold;
 	border-radius: $large-border-radius;
+}
+
+@media (max-width: 959px) {
+
+	.contact-wrapper {
+		border-radius: 0;
+	}
+
 }
 
 .contact-information{
@@ -12,12 +20,29 @@
 	padding-top: 100px;
 }
 
+@media (max-width: 959px) {
+
+	.contact-information {
+		width: 100%;
+		padding: 50px 0;
+	}
+
+}
+
 .contact-icons-list {
 
 	margin: 1em auto;
 	width: 390px;
 
 	@extend %list-reset;
+
+}
+
+@media (max-width: 449px) {
+
+	.contact-icons-list {
+		width: 195px;
+	}
 
 }
 
@@ -50,7 +75,7 @@
 	background: $dark-gold;
 }
 
-.js .contact-icons-list__text {
+.contact-icons-list__text {
 	position: absolute;
 	top: 40px;
 	left: 40px;
@@ -67,6 +92,11 @@
 	transition: ease-in-out $animation-fast;
 }
 
+@media (max-width: 959px) {
+	.contact-icons-list__text {
+		display: none;
+	}
+}
 .contact-icons__list-item--address .contact-icons-list__icon {
 	background-image: url('/images/social-media-icons-sprite.svg');
 	background-repeat: no-repeat;
@@ -109,37 +139,43 @@
 }
 
 .contact-icons__list-item--address a:hover .contact-icons-list__icon,
-.contact-icons__list-item--address a:focus .contact-icons-list__icon {
+.contact-icons__list-item--address a:focus .contact-icons-list__icon,
+.contact-icons__list-item--address a.active .contact-icons-list__icon {
 	background-position: 0 -55px;
 	outline: none;
 }
 
 .contact-icons__list-item--phone a:hover .contact-icons-list__icon,
-.contact-icons__list-item--phone a:focus .contact-icons-list__icon {
+.contact-icons__list-item--phone a:focus .contact-icons-list__icon,
+.contact-icons__list-item--phone a.active .contact-icons-list__icon {
 	background-position: -55px -55px;
 	outline: none;
 }
 
 .contact-icons__list-item--email a:hover .contact-icons-list__icon,
-.contact-icons__list-item--email a:focus .contact-icons-list__icon {
+.contact-icons__list-item--email a:focus .contact-icons-list__icon,
+.contact-icons__list-item--email a.active .contact-icons-list__icon {
 	background-position: -110px -55px;
 	outline: none;
 }
 
 .contact-icons__list-item--twitter a:hover .contact-icons-list__icon,
-.contact-icons__list-item--twitter a:focus .contact-icons-list__icon {
+.contact-icons__list-item--twitter a:focus .contact-icons-list__icon,
+.contact-icons__list-item--twitter a.active .contact-icons-list__icon {
 	background-position: -165px -55px;
 	outline: none;
 }
 
 .contact-icons__list-item--facebook a:hover .contact-icons-list__icon,
-.contact-icons__list-item--facebook a:focus .contact-icons-list__icon {
+.contact-icons__list-item--facebook a:focus .contact-icons-list__icon,
+.contact-icons__list-item--facebook a.active .contact-icons-list__icon {
 	background-position: -220px -55px;
 	outline: none;
 }
 
 .contact-icons__list-item--instagram a:hover .contact-icons-list__icon,
-.contact-icons__list-item--instagram a:focus .contact-icons-list__icon {
+.contact-icons__list-item--instagram a:focus .contact-icons-list__icon,
+.contact-icons__list-item--instagram a.active .contact-icons-list__icon {
 	background-position: -275px -55px;
 	outline: none;
 }
@@ -159,9 +195,25 @@
 
 }
 
+@media (max-width: 959px) {
+
+	.contact-information__text {
+		display: none;
+	}
+
+}
+
 .google-map {
 	width: 50%;
 	height: 480px;
 	float: left;
 	border-radius: 0 10px 10px 0;
+}
+
+@media (max-width: 959px) {
+
+	.google-map {
+		display: none;
+	}
+
 }

@@ -673,10 +673,14 @@ body {
     padding: 0.5em 1em; } }
 
 .contact-wrapper {
-  width: 960px;
+  max-width: 960px;
   margin: 0 auto 50px;
   background: #e2ddd5;
   border-radius: 10px; }
+
+@media (max-width: 959px) {
+  .contact-wrapper {
+    border-radius: 0; } }
 
 .contact-information {
   width: 50%;
@@ -684,9 +688,18 @@ body {
   position: relative;
   padding-top: 100px; }
 
+@media (max-width: 959px) {
+  .contact-information {
+    width: 100%;
+    padding: 50px 0; } }
+
 .contact-icons-list {
   margin: 1em auto;
   width: 390px; }
+
+@media (max-width: 449px) {
+  .contact-icons-list {
+    width: 195px; } }
 
 .contact-icons__list-item {
   float: left;
@@ -709,7 +722,7 @@ body {
   display: inline-block;
   background: #9f9c90; }
 
-.js .contact-icons-list__text {
+.contact-icons-list__text {
   position: absolute;
   top: 40px;
   left: 40px;
@@ -724,6 +737,10 @@ body {
   border-radius: 3px;
   letter-spacing: -10px;
   transition: ease-in-out 100ms; }
+
+@media (max-width: 959px) {
+  .contact-icons-list__text {
+    display: none; } }
 
 .contact-icons__list-item--address .contact-icons-list__icon {
   background-image: url('/images/social-media-icons-sprite.svg');
@@ -760,27 +777,27 @@ body {
   background-size: 330px;
   background-position: -275px 0; }
 
-.contact-icons__list-item--address a:hover .contact-icons-list__icon, .contact-icons__list-item--address a:focus .contact-icons-list__icon {
+.contact-icons__list-item--address a:hover .contact-icons-list__icon, .contact-icons__list-item--address a:focus .contact-icons-list__icon, .contact-icons__list-item--address a.active .contact-icons-list__icon {
   background-position: 0 -55px;
   outline: none; }
 
-.contact-icons__list-item--phone a:hover .contact-icons-list__icon, .contact-icons__list-item--phone a:focus .contact-icons-list__icon {
+.contact-icons__list-item--phone a:hover .contact-icons-list__icon, .contact-icons__list-item--phone a:focus .contact-icons-list__icon, .contact-icons__list-item--phone a.active .contact-icons-list__icon {
   background-position: -55px -55px;
   outline: none; }
 
-.contact-icons__list-item--email a:hover .contact-icons-list__icon, .contact-icons__list-item--email a:focus .contact-icons-list__icon {
+.contact-icons__list-item--email a:hover .contact-icons-list__icon, .contact-icons__list-item--email a:focus .contact-icons-list__icon, .contact-icons__list-item--email a.active .contact-icons-list__icon {
   background-position: -110px -55px;
   outline: none; }
 
-.contact-icons__list-item--twitter a:hover .contact-icons-list__icon, .contact-icons__list-item--twitter a:focus .contact-icons-list__icon {
+.contact-icons__list-item--twitter a:hover .contact-icons-list__icon, .contact-icons__list-item--twitter a:focus .contact-icons-list__icon, .contact-icons__list-item--twitter a.active .contact-icons-list__icon {
   background-position: -165px -55px;
   outline: none; }
 
-.contact-icons__list-item--facebook a:hover .contact-icons-list__icon, .contact-icons__list-item--facebook a:focus .contact-icons-list__icon {
+.contact-icons__list-item--facebook a:hover .contact-icons-list__icon, .contact-icons__list-item--facebook a:focus .contact-icons-list__icon, .contact-icons__list-item--facebook a.active .contact-icons-list__icon {
   background-position: -220px -55px;
   outline: none; }
 
-.contact-icons__list-item--instagram a:hover .contact-icons-list__icon, .contact-icons__list-item--instagram a:focus .contact-icons-list__icon {
+.contact-icons__list-item--instagram a:hover .contact-icons-list__icon, .contact-icons__list-item--instagram a:focus .contact-icons-list__icon, .contact-icons__list-item--instagram a.active .contact-icons-list__icon {
   background-position: -275px -55px;
   outline: none; }
 
@@ -795,8 +812,16 @@ body {
     color: white;
     font-size: 50px; }
 
+@media (max-width: 959px) {
+  .contact-information__text {
+    display: none; } }
+
 .google-map {
   width: 50%;
   height: 480px;
   float: left;
   border-radius: 0 10px 10px 0; }
+
+@media (max-width: 959px) {
+  .google-map {
+    display: none; } }

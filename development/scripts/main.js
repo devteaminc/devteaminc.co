@@ -60,10 +60,18 @@ $(window).on('scroll', function(){
 
 (function(){
 
-	$('.contact-icons__list-item a').on( 'mouseover focus', function ( event ) {
+	var contactIconLink = $('.contact-icons__list-item a');
 
-		$('.contact-icons__list-item a').removeClass('active');
-		$(this).toggleClass('active');
+	// Set our first link as active
+	contactIconLink.first().addClass('active');
+
+	// On mouse-over
+	contactIconLink.on( 'mouseover focus', function () {
+
+		// Remove all active classes
+		contactIconLink.removeClass('active');
+		// Set our hovered/focused link as active
+		$( this ).toggleClass('active');
 
 	});
 
