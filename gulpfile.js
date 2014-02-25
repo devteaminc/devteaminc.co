@@ -76,6 +76,21 @@ gulp.task( 'buildClean', function () {
 /**
  * Gulp Task
  * =========
+ * Copy Files
+ */
+
+gulp.task( 'buildCopy', function () {
+
+	return gulp.src( path.dev.root + '/*.*' )
+		.pipe( gulp.dest( path.build.root ))
+	;
+
+});
+
+
+/**
+ * Gulp Task
+ * =========
  * Compile Sass to CSS, auto-prefix and minify for build
  */
 
@@ -175,7 +190,7 @@ gulp.task( 'watch', function () {
 
 gulp.task( 'build', function () {
 
-	runSequence( 'buildClean', [ 'buildStyles', 'buildImages', 'optimizeSVG' ], 'buildUsemin' );
+	runSequence( 'buildClean', 'buildCopy', [ 'buildStyles', 'buildImages', 'optimizeSVG' ], 'buildUsemin' );
 
 });
 
