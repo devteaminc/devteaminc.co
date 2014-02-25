@@ -447,6 +447,10 @@ body {
 .section__title.section__title--contact:after {
   background: #cae0a8; }
 
+@media (max-width: 959px) {
+  .section__title {
+    font-size: 48px; } }
+
 .main-navigation {
   float: right; }
 
@@ -500,6 +504,10 @@ body {
   transition: opacity ease-in-out 400ms; }
   .main-header__logo.visible {
     opacity: 1; }
+
+@media (max-width: 959px) {
+  .main-header__logo {
+    display: none; } }
 
 .cf:before, .cf:after {
   content: " ";
