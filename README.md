@@ -25,6 +25,5 @@ If you want to add in any additional JavaScript files to the project, add them i
 ## Deployment
 
 
-1. Commit and push local changes to Github
-2. Create a build with Gulp.js: `gulp build`
-2. Subtree Push to deploy: `git subtree push —prefix build origin build`
+1. Create a build with Gulp.js: `gulp build`
+2. Subtree Push to deploy: `git subtree push --prefix build origin build`
