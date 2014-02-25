@@ -16,10 +16,12 @@
 		transition: ease-in-out $animation-fast;
 		padding: 1.25em 1.5em 1.25em 0;
 		display: block;
-	}
 
-	a:hover {
-		color: rgba(0,0,0,0.3);
+		&:hover,
+		&:focus {
+			color: rgba(0,0,0,0.3);
+		}
+
 	}
 
 }
