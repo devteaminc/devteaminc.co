@@ -2,6 +2,12 @@
 
 This is the source for our website on http://devteaminc.co.
 
+## Installation dependencies
+*(make sure Node is installed first)*
+
+* [Node.js](http://nodejs.org/)
+* [Bower](http://bower.io/)
+
 ## Setting up
 
 1. Clone this repo `git clone https://github.com/devteaminc/devteaminc.co.git DevTeamInc.co`
