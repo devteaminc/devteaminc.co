@@ -78,6 +78,43 @@ $(window).on('scroll', function(){
 })();
 
 // ==============================================
+// Section Transition
+// ==============================================
+
+(function() {
+
+	// Target links with a hash followed by an ID
+	$('a[href*=#]:not([href=#])').on( 'click', function (event) {
+
+		// prevent our default action
+		event.preventDefault();
+
+		// If link hostname is the same as our location hostname
+		if ( location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname ) {
+
+			// Get the target
+			var target = $(this.hash);
+
+			// Clean it up
+			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+
+			// If we have a target
+			if ( target.length ) {
+
+				// Animate to that target
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 400);
+
+			}
+
+		}
+
+	});
+
+})();
+
+// ==============================================
 // Google Maps
 // ==============================================
 
