@@ -663,8 +663,9 @@ body {
   .team-member__portrait.team-member__portrait--chris {
     background-image: url('/images/team-portrait-chris.png');
     background-color: #9bf1d4; }
-  .team-member__portrait.team-member__portrait--empty {
-    background-image: url('/images/team-portrait-empty.png'); }
+  .team-member__portrait.team-member__portrait--max {
+    background-image: url('/images/team-portrait-max.png');
+    background-color: #696969; }
 
 
 .team-member__title {
