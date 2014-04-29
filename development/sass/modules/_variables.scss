@@ -1,41 +1,48 @@
+
+/**
+ * Variables
+ */
+
 // ==============================================
 // Colour Variables
 // ==============================================
 
-$dark-grey: #252525;
-$medium-grey: #696969;
-$light-grey: #b4b4b4;
-$lighter-grey: #eaeaea;
-$light-gold: #e2ddd5;
-$dark-gold: #9f9c90;
-$orange: #ffac42;
-$red: #fb5555;
-$orange: #ffac42;
-$green: #cae0a8;
-$purple: #7d6ddb;
-$aqua: #9bf1d4;
+$dark-grey        : #252525;
+$medium-dark-grey : #303030;
+$medium-grey      : #696969;
+$light-grey       : #b4b4b4;
+$lighter-grey     : #eaeaea;
+$light-gold       : #e2ddd5;
+$dark-gold        : #9f9c90;
+$orange           : #ffac42;
+$red              : #fb5555;
+$orange           : #ffac42;
+$green            : #cae0a8;
+$purple           : #7d6ddb;
+$aqua             : #9bf1d4;
 
 // ==============================================
 // Font Size Variables
 // ==============================================
 
-$base-font-size: 16px;
-$large-font-size: 68px;
-$medium-font-size: 32px;
-$small-font-size: 12px;
+$base-font-size         : 16px;
+$large-font-size        : 68px;
+$medium-font-size       : 32px;
+$small-medium-font-size : 14px;
+$small-font-size        : 12px;
 
 // ==============================================
 // Border Radius Variables
 // ==============================================
 
-$large-border-radius: 10px;
-$medium-border-radius: 5px;
-$small-border-radius: 3px;
+$large-border-radius  : 10px;
+$medium-border-radius : 5px;
+$small-border-radius  : 3px;
 
 // ==============================================
 // Animation Speed Variables
 // ==============================================
 
-$animation-fast: 100ms;
-$animation-medium: 200ms;
-$animation-slow: 400ms;
+$animation-fast   : 100ms;
+$animation-medium : 200ms;
+$animation-slow   : 400ms;

@@ -4,6 +4,7 @@ $(window).on('scroll', function(){
 
 	var currentPosition = $(window).scrollTop();
 
+
 	// ==============================================
 	// Intro Logo - Parallax Effect
 	// ==============================================
@@ -27,6 +28,7 @@ $(window).on('scroll', function(){
 		}
 
 	})();
+
 
 	// ==============================================
 	// Header Animation
@@ -57,6 +59,7 @@ $(window).on('scroll', function(){
 
 });
 
+
 // ==============================================
 // Responsive Menu
 // ==============================================
@@ -69,7 +72,7 @@ $(window).on('scroll', function(){
 	var buttonTemplate = '<a class="main-navigation__toggle-button" id="toggleNavMenu" tabindex="1"></a>';
 
 	// Insert our toggle button
-	menu.after( buttonTemplate );
+	menu.before( buttonTemplate );
 
 	// On click or keypress
 	$(document).on( 'click keypress', '#toggleNavMenu', function ( event ) {
@@ -91,6 +94,7 @@ $(window).on('scroll', function(){
 	});
 
 })();
+
 
 // ==============================================
 // Persistent Contact Information
@@ -257,106 +261,217 @@ $(window).on('scroll', function(){
 
 
 // ==============================================
-// Konami Code
+// Newsfeed Toggle
+// - Adds conditional CSS class, all animations
+//   are generated with CSS3 Transitions
 // ==============================================
 
+(function(){
 
-var Konami = function (callback) {
-	var konami = {
-		addEvent: function (obj, type, fn, ref_obj) {
-			if (obj.addEventListener)
-				obj.addEventListener(type, fn, false);
-			else if (obj.attachEvent) {
-				// IE
-				obj["e" + type + fn] = fn;
-				obj[type + fn] = function () {
-					obj["e" + type + fn](window.event, ref_obj);
+	$('#newsFeedToggle').on( 'click', function () {
+
+		$('body').toggleClass('newsfeed-active');
+
+	});
+
+	$('#siteMask').on( 'click', function () {
+
+		$('body').removeClass('newsfeed-active');
+
+	});
+
+})();
+
+
+// ==============================================
+// Konami Code
+// - (/scripts/plugins/konami-js/)
+// ==============================================
+
+(function(){
+
+	var easterEgg = new Konami(function() {
+
+		$(document.body).addClass('konami');
+
+	});
+
+})();
+
+
+// ==============================================
+// Last.fm Widget
+// - (/scripts/plugins/lastfmnowplaying/)
+// ==============================================
+
+(function(){
+
+	$('#lastFmWidget').lastfmNowPlaying({
+		apiKey: 'd8abda572c7cfcb1522dfe167d6cd8fb',
+		members: [
+			'colouryum',
+			'pshillier',
+			'seengee',
+			'silentdecay'
+		]
+	});
+
+})();
+
+
+// ==============================================
+// Slack Feed
+// ==============================================
+
+(function(){
+
+	// in Array function
+	// - For checking of string is in an array
+
+	function inArray ( array, query ) {
+		return array.indexOf( query ) > -1;
+	}
+
+	// AJAX call
+	// - Make a call to our Slack Messages API
+
+	$.ajax({
+		url: 'http://api.devteaminc.co/latest?callback=jsonp',
+		method: 'GET',
+		dataType: 'jsonp',
+		success: function( data ) {
+
+			// Iterate through each message
+
+			$( data.messages ).each( function() {
+
+				// Save reference to each message
+				var message = this;
+
+				// Save reference to message keys
+				var messageKeys = Object.keys( message );
+
+				// Create blank attachment key array
+				var attachmentKeys = [];
+
+				// If we have attachment keys, add them to the attachment key array (concat)
+				if ( inArray ( messageKeys, 'attachments' ) ) {
+					attachmentKeys = attachmentKeys.concat( Object.keys( message.attachments[0] ) );
 				}
-				obj.attachEvent("on" + type, obj[type + fn]);
-			}
-		},
-		input: "",
-		pattern: "38384040373937396665",
-		load: function (link) {
-			this.addEvent(document, "keydown", function (e, ref_obj) {
-				if (ref_obj) konami = ref_obj; // IE
-				konami.input += e ? e.keyCode : event.keyCode;
-				if (konami.input.length > konami.pattern.length)
-					konami.input = konami.input.substr((konami.input.length - konami.pattern.length));
-				if (konami.input == konami.pattern) {
-					konami.code(link);
-					konami.input = "";
-					e.preventDefault();
-					return false;
-				}
-			}, this);
-			this.iphone.load(link);
-		},
-		code: function (link) {
-			window.location = link
-		},
-		iphone: {
-			start_x: 0,
-			start_y: 0,
-			stop_x: 0,
-			stop_y: 0,
-			tap: false,
-			capture: false,
-			orig_keys: "",
-			keys: ["UP", "UP", "DOWN", "DOWN", "LEFT", "RIGHT", "LEFT", "RIGHT", "TAP", "TAP"],
-			code: function (link) {
-				konami.code(link);
-			},
-			load: function (link) {
-				this.orig_keys = this.keys;
-				konami.addEvent(document, "touchmove", function (e) {
-					if (e.touches.length == 1 && konami.iphone.capture == true) {
-						var touch = e.touches[0];
-						konami.iphone.stop_x = touch.pageX;
-						konami.iphone.stop_y = touch.pageY;
-						konami.iphone.tap = false;
-						konami.iphone.capture = false;
-						konami.iphone.check_direction();
+
+				// Prepare Data
+
+				var text      = '';
+				var image     = '';
+				var video     = '';
+				var timeStamp = '<time class="newsfeed-post__date" datetime ="' + new Date( parseInt( message.ts, 10 ) * 1000 ) + '" >' + moment( new Date( parseInt( message.ts, 10 ) * 1000 ) ).startOf('hour').fromNow() + '</time>'; // Slack uses Unix time stamps (seconds), JavaScript time should be in milliseconds
+				var groupPurpose = '';
+				var groupJoin = '';
+				var postCategory = '';
+
+				// Set variables if post is a notification of group purpose or a member joining a group
+
+				if ( inArray ( messageKeys, 'subtype' ) ) {
+
+					if ( message.subtype === 'group_purpose' ) {
+						groupPurpose = true;
+					} else if ( message.subtype === 'group_join' ) {
+						groupJoin = true;
 					}
-				});
-				konami.addEvent(document, "touchend", function (evt) {
-					if (konami.iphone.tap == true) konami.iphone.check_direction(link);
-				}, false);
-				konami.addEvent(document, "touchstart", function (evt) {
-					konami.iphone.start_x = evt.changedTouches[0].pageX;
-					konami.iphone.start_y = evt.changedTouches[0].pageY;
-					konami.iphone.tap = true;
-					konami.iphone.capture = true;
-				});
-			},
-			check_direction: function (link) {
-				x_magnitude = Math.abs(this.start_x - this.stop_x);
-				y_magnitude = Math.abs(this.start_y - this.stop_y);
-				x = ((this.start_x - this.stop_x) < 0) ? "RIGHT" : "LEFT";
-				y = ((this.start_y - this.stop_y) < 0) ? "DOWN" : "UP";
-				result = (x_magnitude > y_magnitude) ? x : y;
-				result = (this.tap == true) ? "TAP" : result;
 
-				if (result == this.keys[0]) this.keys = this.keys.slice(1, this.keys.length);
-				if (this.keys.length == 0) {
-					this.keys = this.orig_keys;
-					this.code(link);
 				}
-			}
+
+				// Filter messages
+				
+				if ( !inArray ( messageKeys, 'hidden' ) && message.username !== 'github' && !groupPurpose && !groupJoin ) {
+
+					// Message text template (remove angled brackets added to hyperlinks by Slack)
+
+					if ( inArray ( messageKeys, 'text' ) ) {
+
+						// Create reference to the URL
+						var linkUrl =  message.text.match(/[^<>]+(?=>)/g);
+
+						text = '<p class="newsfeed-post__text">' + message.text.replace(/</g,'<a class="newsfeed-post__link" href="').replace(/>/g,'" target="_blank">' + linkUrl + '</a>').replace(/\\n/g, 'TEST') + '</p>';
+
+						if ( linkUrl ) {
+							postCategory = 'link';
+						} else {
+							postCategory = 'text';
+						}
+
+					}
+
+					// Message Attachement Image
+
+					if ( inArray ( attachmentKeys, 'image_url' ) ) {
+
+						var externalUrl = message.attachments[0].from_url;
+						var imageTitle  = message.attachments[0].title;
+
+						image = '<a class="newsfeed-post__imagelink" href="' + externalUrl + '" target="_blank" title="' + imageTitle + '"><img class="newsfeed-post__image" src="' + message.attachments[0].image_url + '"/ alt="' + imageTitle + '" ></a>';
+						postCategory = 'image';
+
+					}
+
+					// Message Attachement Video
+
+					if ( inArray ( attachmentKeys, 'video_html' ) ) {
+						image = message.attachments[0].video_html;
+						postCategory = 'video';
+					}
+
+					// Remove hidden message timestamps
+
+					if ( inArray ( messageKeys, 'hidden' ) ) {
+						timeStamp = '';
+						text      = '';
+					}
+
+					// Prepare Template
+
+					var template =
+						'<div class="newsfeed-post newsfeed-post--' + postCategory + '">' +
+							'<i class="newsfeed-post__category-icon newsfeed-post__category-icon--' + postCategory + '"></i>' +
+							timeStamp +
+							text +
+							image +
+							video +
+						'</div>'
+					;
+
+					// Append template to news feed
+
+					$('#newsFeedStream').append( template );
+
+				}
+
+			});
+
 		}
-	}
+	});
 
-	typeof callback === "string" && konami.load(callback);
-	if (typeof callback === "function") {
-		konami.code = callback;
-		konami.load();
-	}
+})();
 
-	return konami;
-};
 
-var easterEgg = new Konami(function() {
+// ==============================================
+// Emojify Configuration
+// - (/scripts/vendor/emojify/)
+// ==============================================
 
-    $(document.body).addClass('konami');
+(function(){
 
-});
+	emojify.setConfig({
+
+		emoticons_enabled : true,
+		people_enabled    : true,
+		nature_enabled    : true,
+		objects_enabled   : true,
+		places_enabled    : true,
+		symobols_enabled  : true
+
+	});
+
+	emojify.run();
+
+})();

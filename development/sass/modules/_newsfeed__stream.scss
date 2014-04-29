@@ -1,0 +1,98 @@
+
+/**
+ * News Feed Stream
+ * - Styling for News Feed Stream (Slack API)
+ */
+
+ // Newsfeed Posts Wrapper
+
+.newsfeed-stream {
+	float: left;
+	height: inherit;
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+// Individual Posts
+
+.newsfeed-post {
+
+	position: relative;
+	padding: 10px;
+	margin: 10px;
+	background: $medium-dark-grey;
+	border-radius: 3px;
+
+	// Styling for images and iframes
+
+	img,
+	iframe {
+		display: block;
+		max-width: 100%;
+	}
+
+}
+
+// Post Date
+
+.newsfeed-post__date {
+	font-size: $small-font-size;
+	color: $medium-grey;
+	text-shadow: 0 1px 0 #000;
+	text-transform: capitalize;
+}
+
+// Post Category Icons
+
+.newsfeed-post__category-icon {
+
+	background: url('/images/feed-category-icons.png') no-repeat 0 0 / auto 40px;
+	height: 20px;
+	width: 20px;
+	float: right;
+
+	&.newsfeed-post__category-icon--text {
+		background-position: -20px 0;
+	}
+
+	&.newsfeed-post__category-icon--image {
+		background-position: -40px 0;
+	}
+
+	&.newsfeed-post__category-icon--video {
+		background-position: -60px 0;
+	}
+
+}
+
+// Post Text
+
+.newsfeed-post__text {
+	font-size: $small-medium-font-size;
+	line-height: 1.5em;
+}
+
+// Post Link (displaying within post text)
+
+.newsfeed-post__link {
+	word-break: break-word;
+	color: $purple;
+}
+
+// Video / image post links
+// - For prevention of duplicate links
+
+.newsfeed-post--video .newsfeed-post__text a,
+.newsfeed-post--image .newsfeed-post__text a {
+	display :none;
+}
+
+// Emoji Styling
+
+.emoji {
+	height: 32px;
+	width: 32px;
+	display: inline-block;
+	max-width: none;
+}

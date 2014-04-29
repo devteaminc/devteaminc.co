@@ -1,0 +1,53 @@
+
+/**
+ * Sidebar - Last.fm
+ * - Used for the Last.fm sidebar module
+ */
+
+.last-fm-widget {
+
+	cursor: pointer;
+	float: left;
+	width: 100%;
+	position: absolute;
+	top: 52px;
+	left: 50px;
+	transition: $animation-medium ease-in-out;
+	z-index: 20;
+
+	.newsfeed-active & {
+		left: 0;
+	}
+
+}
+
+.last-fm-widget__track-details {
+
+	float: left;
+	width: 100%;
+	background: #000;
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 #333;
+
+}
+
+.last-fm-widget__imageholder {
+	float: left;
+	width: 20%;
+	height: 60px;
+	background: #000 url('/images/last-fm-no-artwork.png') no-repeat center / contain;
+}
+
+.last-fm-widget__album-artwork {
+	max-width: 100%;
+}
+
+.last-fm-widget__track-text {
+	float: right;
+	width: 80%;
+	font-size: $small-font-size;
+	color: $medium-grey;
+	text-transform: uppercase;
+	margin: 20px 0;
+	line-height: 20px;
+}

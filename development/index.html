@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>DevTeam Inc.</title>
 		<meta name="description" content="DevTeam Inc.">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 		<link rel="author" href="humans.txt" />
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.gif" type="image/gif">
@@ -183,10 +183,38 @@
 			<a href="#top" id="scrollToTop" class="scroll-to-top"></a>
 		</div>
 
+		<aside class="newsfeed" id="newsFeed">
+
+			<header class="newsfeed__header">
+				<button class="newsfeed__toggle" id="newsFeedToggle">Toggle</button>
+				<h3 class="newsfeed__title">Latest News</h3>
+			</header>
+
+			<script type="text/template" id="lastFmWidget">
+			<div class="last-fm-widget" id="lastFmWidget">
+				<div class="last-fm-widget__track-details">
+					<div class="last-fm-widget__imageholder"><img class="last-fm-widget__album-artwork" src="{ track.image.medium }" alt="Album Artwork"></div>
+					<marquee class="last-fm-widget__track-text"> Currently Playing: { track.artist } - { track.title }</marquee>
+				</div>
+			</div>
+			</script>
+
+			<div class="newsfeed-stream" id="newsFeedStream">
+				
+			</div>
+			
+		</aside>
+
+		<div id="siteMask" class="site-mask"></div>
+
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 		<!-- build:js scripts/scripts.js -->
 		<script src="scripts/vendor/jquery/dist/jquery.js"></script>
+		<script src="scripts/vendor/emojify/emojify.js"></script>
+		<script src="scripts/vendor/momentjs/moment.js"></script>
+		<script src="scripts/vendor/lastfmnowplaying/jquery.lastfmnowplaying.js"></script>
+		<script src="scripts/vendor/konami-js/konami.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->
 

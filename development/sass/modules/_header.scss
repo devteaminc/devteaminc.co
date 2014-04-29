@@ -1,3 +1,8 @@
+/**
+ * Header
+ * - Main website header
+ */
+
 .main-header {
 
 	transition: background ease-in-out $animation-slow;
@@ -9,6 +14,7 @@
 }
 
 .main-header__logo {
+
 	height: 35px;
 	width: 100px;
 	background: url('/images/dev-team-inc-logo.svg') no-repeat center top;
@@ -17,7 +23,6 @@
 	overflow: hidden;
 	margin: 0.25em 1em 0;
 	opacity: 0;
-
 	transition: opacity ease-in-out $animation-slow;
 
 	&.visible {

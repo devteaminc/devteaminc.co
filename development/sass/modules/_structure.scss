@@ -1,3 +1,8 @@
+
+/**
+ * Structure
+ */
+
 // Silent Classes
 
 %full-screen {
@@ -9,7 +14,9 @@
 %full-width {
 	float: left;
 	width: 100%;
+	box-sizing: border-box;
 }
+
 
 html,
 body {
@@ -41,16 +48,16 @@ body {
 
 .team {
 	@extend %full-width;
-	padding: 50px 0;
+	padding: 50px 50px 50px 0;
 }
 
 .about {
 	@extend %full-width;
-	padding: 50px 0;
+	padding: 50px 50px 50px 0;
 	background: $lighter-grey;
 }
 
 .contact {
 	@extend %full-width;
-	padding: 50px 0;
+	padding: 50px 50px 50px 0;
 }
