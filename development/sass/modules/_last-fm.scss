@@ -36,6 +36,7 @@
 	width: 20%;
 	height: 60px;
 	background: #000 url('/images/last-fm-no-artwork.png') no-repeat center / contain;
+	overflow: hidden;
 }
 
 .last-fm-widget__album-artwork {

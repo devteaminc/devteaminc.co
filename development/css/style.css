@@ -987,7 +987,8 @@ body {
   float: left;
   width: 20%;
   height: 60px;
-  background: #000 url('/images/last-fm-no-artwork.png') no-repeat center/contain; }
+  background: #000 url('/images/last-fm-no-artwork.png') no-repeat center/contain;
+  overflow: hidden; }
 
 .last-fm-widget__album-artwork {
   max-width: 100%; }
@@ -1131,6 +1132,12 @@ body {
     letter-spacing: 2px;
     color: #696969;
     outline: none; }
+
+@media (max-width: 659px) {
+  .team-members__list-item {
+    width: 100%; }
+  .team-member__portrait {
+    margin: 20px auto; } }
 
 .about {
   position: relative;
