@@ -12,19 +12,19 @@
  * Load our dependencies
  */
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp         = require('gulp');
+var sass         = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
-var imagemin = require('gulp-imagemin');
-var svgmin = require('gulp-svgmin');
-var uglify = require('gulp-uglify');
-var rev = require('gulp-rev');
-var usemin = require('gulp-usemin');
-var rimraf = require('gulp-rimraf');
-var notify = require('gulp-notify');
-var runSequence = require('run-sequence');
-var liveReload = require('gulp-livereload');
+var minifycss    = require('gulp-minify-css');
+var imagemin     = require('gulp-imagemin');
+var svgmin       = require('gulp-svgmin');
+var uglify       = require('gulp-uglify');
+var rev          = require('gulp-rev');
+var usemin       = require('gulp-usemin');
+var rimraf       = require('gulp-rimraf');
+var notify       = require('gulp-notify');
+var runSequence  = require('run-sequence');
+var liveReload   = require('gulp-livereload');
 
 
 /**
@@ -34,32 +34,32 @@ var liveReload = require('gulp-livereload');
 
 var config = {
 
-	path: {
+	path : {
 
-		build: {
-			root: 'build',
-			css: 'build/css',
-			img: 'build/images',
-			js: 'build/scripts'
+		build : {
+			root : 'build',
+			css  : config.path.build.root + '/css',
+			img  : config.path.build.root + '/images',
+			js   : config.path.build.root + '/scripts'
 		},
 
-		dev: {
-			root: 'development',
-			css: 'development/css',
-			sass: 'development/sass',
-			img: 'development/images',
-			js: 'development/scripts'
+		dev : {
+			root : 'development',
+			css  : config.path.dev.root + '/css',
+			sass : config.path.dev.root + '/sass',
+			img  : config.path.dev.root + '/images',
+			js   : config.path.dev.root + '/scripts'
 		}
 
 	},
 
-	message: {
-		sassCompilationComplete: '😻 Compiled Sass to CSS',
-		sassCompilationError: '🙀 Sass Error: ',
-		cssMinificationComplete: '😻 Minified CSS',
-		cssPrefixComplete: '😻 Added CSS Prefixes',
-		imgOptimComplete: '😻 Optimized Raster Images',
-		svgOptimComplete: '😻 Optimized SVG Images'
+	message : {
+		sassCompilationComplete : '😻 Compiled Sass to CSS',
+		sassCompilationError    : '🙀 Sass Error: ',
+		cssMinificationComplete : '😻 Minified CSS',
+		cssPrefixComplete       : '😻 Added CSS Prefixes',
+		imgOptimComplete        : '😻 Optimized Raster Images',
+		svgOptimComplete        : '😻 Optimized SVG Images'
 	}
 
 };
@@ -150,40 +150,6 @@ gulp.task( 'optimizeSvg', function () {
 });
 
 
-gulp.task( 'prefixCSS', function () {
-
-	/**
-	 * Gulp Task
-	 * =========
-	 * Add vendor prefixes to CSS in build directory
-	 */
-
-	return gulp.src( './' + config.path.build.css + '/style.css' )
-		.pipe( autoprefixer( 'last 2 version', 'ie 7', 'ie 8', 'ie 9' ))
-		.pipe( gulp.dest( './' + config.path.build.css ))
-		.pipe( notify( config.message.cssPrefixComplete ) )
-	;
-
-});
-
-
-gulp.task( 'minifyCSS', function () {
-
-	/**
-	 * Gulp Task
-	 * =========
-	 * Minify CSS in build directory
-	 */
-
-	return gulp.src( './' + config.path.build.css + '/style.css' )
-		.pipe( minifycss() )
-		.pipe( gulp.dest( './' + config.path.build.css ) )
-		.pipe( notify( config.message.cssMinificationComplete ) )
-	;
-
-});
-
-
 gulp.task( 'buildUsemin', function () {
 
 	/**
@@ -196,7 +162,7 @@ gulp.task( 'buildUsemin', function () {
 		.pipe( usemin({
 			html: [],
 			js: [ uglify(), rev() ],
-			css: [ rev() ]
+			css: [ autoprefixer( 'last 2 version', 'ie 7', 'ie 8', 'ie 9' ), minifycss(), rev() ]
 		}))
 		.pipe( gulp.dest( config.path.build.root ))
 	;
@@ -253,6 +219,6 @@ gulp.task( 'build', function () {
 	 * Build All The Things
 	 */
 
-	runSequence( 'buildClean', 'buildCopy', 'compileSass', 'prefixCSS', 'minifyCSS', [ 'optimizeImages', 'optimizeSvg' ], 'buildUsemin' );
+	runSequence( 'buildClean', 'buildCopy', 'compileSass', [ 'optimizeImages', 'optimizeSvg' ], 'buildUsemin' );
 
 });
