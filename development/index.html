@@ -192,10 +192,10 @@
 
 			<script type="text/template" id="lastFmWidget">
 			<div class="last-fm-widget" id="lastFmWidget">
-				<div class="last-fm-widget__track-details">
+				<a class="last-fm-widget__track-details" href="{ track.url }" target="_blank">
 					<div class="last-fm-widget__imageholder"><img class="last-fm-widget__album-artwork" src="{ track.image.medium }" alt="Album Artwork"></div>
 					<marquee class="last-fm-widget__track-text"> Currently Playing: { track.artist } - { track.title }</marquee>
-				</div>
+				</a>
 			</div>
 			</script>
 
