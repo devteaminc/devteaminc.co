@@ -95,6 +95,9 @@
 		// Perform sorting after we have all our data
 
 		$(document).ajaxStop( function() {
+
+			// Stop listening for event
+			$(this).unbind('ajaxStop');
 			
 			// Custom algorithm for sort() method
 			function sortbyNewest ( a, b ) {

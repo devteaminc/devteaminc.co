@@ -332,124 +332,243 @@ $(window).on('scroll', function(){
 		return array.indexOf( query ) > -1;
 	}
 
-	// AJAX call
-	// - Make a call to our Slack Messages API
+	// Parse data to template
 
-	$.ajax({
-		url: 'http://api.devteaminc.co/latest?callback=jsonp',
-		method: 'GET',
-		dataType: 'jsonp',
-		success: function( data ) {
+	function addToTemplate( data ) {
 
-			// Iterate through each message
+		// Check if data's has_more  === true
 
-			$( data.messages ).each( function() {
+		if ( data.has_more ) {
 
-				// Save reference to each message
-				var message = this;
+			// var lastTimeStamp = ;
 
-				// Save reference to message keys
-				var messageKeys = Object.keys( message );
+			$('#newsFeedStream').attr( 'data-has_more', 'true' );
+			$('#newsFeedStream').attr( 'data-last_ts', data.messages[ data.messages.length - 1].ts );
 
-				// Create blank attachment key array
-				var attachmentKeys = [];
+		} else {
 
-				// If we have attachment keys, add them to the attachment key array (concat)
-				if ( inArray ( messageKeys, 'attachments' ) ) {
-					attachmentKeys = attachmentKeys.concat( Object.keys( message.attachments[0] ) );
+			$('#newsFeedStream').attr( 'data-hasMore', 'false' );
+
+		}
+
+		// Iterate through each message
+
+		$( data.messages ).each( function() {
+
+			// Save reference to each message
+			var message = this;
+
+			// Save reference to message keys
+			var messageKeys = Object.keys( message );
+
+			// Create blank attachment key array
+			var attachmentKeys = [];
+
+			// Create blank files key array
+			var fileKeys = [];
+
+			// If we have attachment keys, add them to the attachment key array (concat)
+			if ( inArray ( messageKeys, 'attachments' ) ) {
+				attachmentKeys = attachmentKeys.concat( Object.keys( message.attachments[0] ) );
+			}
+
+			// If we have file keys, add them to the file key array (concat)
+			if ( inArray ( messageKeys, 'file' ) ) {
+				fileKeys = fileKeys.concat( Object.keys( message.file ) );
+			}
+
+			// Prepare Data
+
+			var text                 = '';
+			var image                = '';
+			var video                = '';
+			var imageFile            = '';
+			var timeStamp            = '<time class="newsfeed-post__date" datetime="' + new Date( parseInt( message.ts, 10 ) * 1000 ) + '" >' + moment( parseInt( message.ts, 10 ) * 1000 ).fromNow() + '</time>'; // Slack uses Unix time stamps (seconds), JavaScript time should be in milliseconds
+			var groupPurpose         = '';
+			var groupJoin            = '';
+			var fileComment          = '';
+			var postCategory         = '';
+			var imageFileDescription = '';
+
+			// Set variables if post is a notification of group purpose or a member joining a group
+
+			if ( inArray ( messageKeys, 'subtype' ) ) {
+
+				if ( message.subtype === 'group_purpose' ) {
+					groupPurpose = true;
+				} else if ( message.subtype === 'group_join' ) {
+					groupJoin = true;
+				} else if ( message.subtype === 'file_comment' ) {
+					fileComment = true;
 				}
 
-				// Prepare Data
+			}
 
-				var text      = '';
-				var image     = '';
-				var video     = '';
-				var timeStamp = '<time class="newsfeed-post__date" datetime ="' + new Date( parseInt( message.ts, 10 ) * 1000 ) + '" >' + moment( new Date( parseInt( message.ts, 10 ) * 1000 ) ).startOf('hour').fromNow() + '</time>'; // Slack uses Unix time stamps (seconds), JavaScript time should be in milliseconds
-				var groupPurpose = '';
-				var groupJoin = '';
-				var postCategory = '';
+			// Filter messages
+			
+			if ( !inArray ( messageKeys, 'hidden' ) && message.username !== 'github' && !groupPurpose && !groupJoin && !fileComment ) {
 
-				// Set variables if post is a notification of group purpose or a member joining a group
+				// Message text template (remove angled brackets added to hyperlinks by Slack)
 
-				if ( inArray ( messageKeys, 'subtype' ) ) {
+				if ( inArray ( messageKeys, 'text' ) ) {
 
-					if ( message.subtype === 'group_purpose' ) {
-						groupPurpose = true;
-					} else if ( message.subtype === 'group_join' ) {
-						groupJoin = true;
+					// Create reference to the URL
+					var linkUrl =  message.text.match(/[^<>]+(?=>)/g);
+
+					text = '<p class="newsfeed-post__text">' + message.text.replace(/</g,'<a class="newsfeed-post__link" href="').replace(/>/g,'" target="_blank">' + linkUrl + '</a>').replace(/\\n/g, 'TEST') + '</p>';
+
+					if ( linkUrl ) {
+						postCategory = 'link';
+					} else {
+						postCategory = 'text';
 					}
 
 				}
 
-				// Filter messages
-				
-				if ( !inArray ( messageKeys, 'hidden' ) && message.username !== 'github' && !groupPurpose && !groupJoin ) {
+				// Message Attachement Image
 
-					// Message text template (remove angled brackets added to hyperlinks by Slack)
+				if ( inArray ( attachmentKeys, 'image_url' ) ) {
 
-					if ( inArray ( messageKeys, 'text' ) ) {
+					var externalUrl = message.attachments[0].from_url;
+					var imageTitle  = message.attachments[0].title;
 
-						// Create reference to the URL
-						var linkUrl =  message.text.match(/[^<>]+(?=>)/g);
+					image = '<a class="newsfeed-post__imagelink" href="' + externalUrl + '" target="_blank" title="' + imageTitle + '"><img class="newsfeed-post__image" src="' + message.attachments[0].image_url + '"/ alt="' + imageTitle + '" ></a>';
+					postCategory = 'image';
 
-						text = '<p class="newsfeed-post__text">' + message.text.replace(/</g,'<a class="newsfeed-post__link" href="').replace(/>/g,'" target="_blank">' + linkUrl + '</a>').replace(/\\n/g, 'TEST') + '</p>';
+				}
 
-						if ( linkUrl ) {
-							postCategory = 'link';
-						} else {
-							postCategory = 'text';
-						}
+				// Message File - Image
 
-					}
+				if ( inArray ( fileKeys, 'mimetype' ) ) {
 
-					// Message Attachement Image
+					var mimeType = message.file.mimetype;
 
-					if ( inArray ( attachmentKeys, 'image_url' ) ) {
+					if ( mimeType.match(/image/g) ) {
 
-						var externalUrl = message.attachments[0].from_url;
-						var imageTitle  = message.attachments[0].title;
-
-						image = '<a class="newsfeed-post__imagelink" href="' + externalUrl + '" target="_blank" title="' + imageTitle + '"><img class="newsfeed-post__image" src="' + message.attachments[0].image_url + '"/ alt="' + imageTitle + '" ></a>';
+						imageFile = '<img src="' + message.file.thumb_360 + '" />';
 						postCategory = 'image';
 
 					}
 
-					// Message Attachement Video
+					// If post has a comment
 
-					if ( inArray ( attachmentKeys, 'video_html' ) ) {
-						image = message.attachments[0].video_html;
-						postCategory = 'video';
+					if ( inArray ( fileKeys, 'initial_comment' ) ) {
+
+						imageFileDescription = '<p class="newsfeed-post__text newsfeed-post__text--file-comment">' + message.file.initial_comment.comment + '</p>';
+
 					}
 
-					// Remove hidden message timestamps
-
-					if ( inArray ( messageKeys, 'hidden' ) ) {
-						timeStamp = '';
-						text      = '';
-					}
-
-					// Prepare Template
-
-					var template =
-						'<div class="newsfeed-post newsfeed-post--' + postCategory + '">' +
-							'<i class="newsfeed-post__category-icon newsfeed-post__category-icon--' + postCategory + '"></i>' +
-							timeStamp +
-							text +
-							image +
-							video +
-						'</div>'
-					;
-
-					// Append template to news feed
-
-					$('#newsFeedStream').append( template );
+					text = '';
 
 				}
+
+				// Message Attachement Video
+
+				if ( inArray ( attachmentKeys, 'video_html' ) ) {
+					image = message.attachments[0].video_html;
+					postCategory = 'video';
+				}
+
+				// Remove hidden message timestamps
+
+				if ( inArray ( messageKeys, 'hidden' ) ) {
+					timeStamp = '';
+					text      = '';
+				}
+
+				// Prepare Template
+
+				var template =
+					'<div class="newsfeed-post newsfeed-post--' + postCategory + '">' +
+						'<header class="newsfeed-post__header">' +
+							'<i class="newsfeed-post__category-icon newsfeed-post__category-icon--' + postCategory + '"></i>' +
+							timeStamp +
+						'</header>' +
+						text +
+						image +
+						imageFile +
+						imageFileDescription +
+						video +
+					'</div>'
+				;
+
+				// Append template to news feed
+
+				$('#newsFeedStream').append( template );
+
+			}
+
+		});
+
+	}
+
+	// AJAX call
+	// - Make a call to our Slack Messages API
+
+	$.ajax({
+		url: 'http://api.devteaminc.co/latest/',
+		method: 'GET',
+		dataType: 'jsonp',
+		success: function ( data ) {
+
+			addToTemplate( data );
+
+			var currentPosition = $('#newsFeedStream').scrollTop() + $('#newsFeedStream').height();
+			var contentHeight = $('#newsFeedStream')[0].scrollHeight - 50;
+
+			if ( currentPosition >= contentHeight ) {
+				
+				var getLastTimeStamp = $('#newsFeedStream').attr('data-last_ts');
+
+				$.ajax({
+					url: 'http://api.devteaminc.co/latest/' + getLastTimeStamp ,
+					method: 'GET',
+					dataType: 'jsonp'
+				}).done( function ( data ) {
+					addToTemplate( data );
+				});
+				
+			}
+
+		}
+	});
+
+	var scrolledPast = false;
+
+	$('#newsFeedStream').on( 'scroll', function () {
+
+		var currentPosition = $('#newsFeedStream').scrollTop() + $('#newsFeedStream').height();
+		var contentHeight = $('#newsFeedStream')[0].scrollHeight - 50;
+
+		if ( currentPosition >= contentHeight && !scrolledPast ) {
+
+			scrolledPast = true;
+			
+			var getLastTimeStamp = $('#newsFeedStream').attr('data-last_ts');
+
+			$.ajax({
+				url: 'http://api.devteaminc.co/latest/' + getLastTimeStamp ,
+				method: 'GET',
+				dataType: 'jsonp',
+				beforeSend: function () {
+					$('#newsFeedLoadingSpinner').addClass('active');
+				}
+			}).always( function () {
+
+				$('#newsFeedLoadingSpinner').removeClass('active');
+
+			}).done( function ( data ) {
+
+				addToTemplate( data );
+				scrolledPast = false;
+				emojify.run();
 
 			});
 
 		}
+
 	});
+
 
 })();
 

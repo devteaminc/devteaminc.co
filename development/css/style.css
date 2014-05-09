@@ -836,7 +836,7 @@ body {
 .newsfeed__title {
   margin: 15px 20px 15px 50px;
   -webkit-font-smoothing: antialiased;
-  -webkit-transform: translate3d(-165px, 25px, 0) rotate3d(0, 0, 1, -90deg);
+  -webkit-transform: translate3d(-165px, 40px, 0) rotate3d(0, 0, 1, -90deg);
   transition: 200ms ease-in-out;
   opacity: 0.333; }
 
@@ -915,15 +915,43 @@ body {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; }
 
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+.newsfeed-loading {
+  visibility: hidden;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background: #000;
+  text-align: center;
+  opacity: 0;
+  transition: ease-in-out 200ms opacity; }
+  .newsfeed-loading.active {
+    visibility: visible;
+    opacity: 0.8; }
+
 .newsfeed-post {
   position: relative;
   padding: 10px;
   margin: 10px;
   background: #303030;
-  border-radius: 3px; }
+  border-radius: 3px;
+  -webkit-animation: fade-in 200ms linear; }
   .newsfeed-post img, .newsfeed-post iframe {
     display: block;
     max-width: 100%; }
+
+.newsfeed-post__header {
+  margin: 0 0 10px; }
 
 .newsfeed-post__date {
   font-size: 12px;
@@ -945,9 +973,14 @@ body {
 
 .newsfeed-post__text {
   font-size: 14px;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  margin: 0; }
+
+.newsfeed-post__text--file-comment {
+  margin: 10px 0 0; }
 
 .newsfeed-post__link {
+  display: block;
   word-break: break-word;
   color: #7d6ddb; }
 

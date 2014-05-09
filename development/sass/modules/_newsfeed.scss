@@ -24,7 +24,7 @@
 	@extend %small-title;
 	margin: 15px 20px 15px 50px;
 	-webkit-font-smoothing: antialiased; // Needed for text on dark backgrounds
-	-webkit-transform: translate3d( -165px, 25px, 0 ) rotate3d( 0, 0, 1, -90deg );
+	-webkit-transform: translate3d( -165px, 40px, 0 ) rotate3d( 0, 0, 1, -90deg );
 	transition: $animation-medium ease-in-out;
 	opacity: 0.333;
 }
