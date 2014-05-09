@@ -15,7 +15,7 @@
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var minifycss    = require('gulp-minify-css');
+var minifyCss    = require('gulp-minify-css');
 var imagemin     = require('gulp-imagemin');
 var svgmin       = require('gulp-svgmin');
 var uglify       = require('gulp-uglify');
@@ -38,17 +38,17 @@ var config = {
 
 		build : {
 			root : 'build',
-			css  : config.path.build.root + '/css',
-			img  : config.path.build.root + '/images',
-			js   : config.path.build.root + '/scripts'
+			css  : 'build/css',
+			img  : 'build/images',
+			js   : 'build/scripts',
 		},
 
 		dev : {
 			root : 'development',
-			css  : config.path.dev.root + '/css',
-			sass : config.path.dev.root + '/sass',
-			img  : config.path.dev.root + '/images',
-			js   : config.path.dev.root + '/scripts'
+			css  : 'development/css',
+			sass : 'development/sass',
+			img  : 'development/images',
+			js   : 'development/scripts'
 		}
 
 	},
@@ -160,9 +160,8 @@ gulp.task( 'buildUsemin', function () {
 
 	return gulp.src( config.path.dev.root + '/*.html' )
 		.pipe( usemin({
-			html: [],
 			js: [ uglify(), rev() ],
-			css: [ autoprefixer( 'last 2 version', 'ie 7', 'ie 8', 'ie 9' ), minifycss(), rev() ]
+			css: [ autoprefixer( 'last 2 version', 'ie 7', 'ie 8', 'ie 9' ), minifyCss(), rev() ]
 		}))
 		.pipe( gulp.dest( config.path.build.root ))
 	;
