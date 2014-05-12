@@ -221,3 +221,14 @@ gulp.task( 'build', function () {
 	runSequence( 'buildClean', 'buildCopy', 'compileSass', [ 'optimizeImages', 'optimizeSvg' ], 'buildUsemin' );
 
 });
+
+
+/**
+ * Gulp Devtools
+ * =============
+ * Provide Gulp-devtools with access to Gulp
+ * - Chrome Extension: http://bit.ly/1lnrpGz
+ * - Node Package: npm install -g gulp-devtools
+ */
+
+module.exports = gulp;
