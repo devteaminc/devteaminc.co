@@ -336,18 +336,16 @@ $(window).on('scroll', function(){
 
 	function addToTemplate( data ) {
 
-		// Check if data's has_more  === true
+		// Check if more posts exists than loaded initially
 
 		if ( data.has_more ) {
-
-			// var lastTimeStamp = ;
 
 			$('#newsFeedStream').attr( 'data-has_more', 'true' );
 			$('#newsFeedStream').attr( 'data-last_ts', data.messages[ data.messages.length - 1].ts );
 
 		} else {
 
-			$('#newsFeedStream').attr( 'data-hasMore', 'false' );
+			$('#newsFeedStream').attr( 'data-has_more', 'false' );
 
 		}
 
