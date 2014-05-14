@@ -7,16 +7,36 @@
  // Newsfeed Posts Wrapper
 
 .newsfeed-stream {
+	position: relative;
 	float: left;
-	height: inherit;
-	width: 100%;
-	overflow-x: auto;
+	height: 100%;
+	width: 300px;
+	overflow-x: scroll;
 	-webkit-overflow-scrolling: touch;
+	padding-top: 111px;
+	top: -111px;
+	z-index: 10;
+	box-sizing: border-box;
 }
 
 // Individual Posts
 
 @-webkit-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-moz-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-ms-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@keyframes fade-in {
 	from { opacity: 0; }
 	to   { opacity: 1; }
 }
@@ -51,6 +71,9 @@
 	background: $medium-dark-grey;
 	border-radius: 3px;
 	-webkit-animation: fade-in $animation-medium linear;
+	   -moz-animation: fade-in $animation-medium linear;
+	    -ms-animation: fade-in $animation-medium linear;
+	        animation: fade-in $animation-medium linear;
 
 	// Styling for images and iframes
 
