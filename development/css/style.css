@@ -904,7 +904,7 @@ body {
     .newsfeed-active .newsfeed {
       width: 320px; }
     .newsfeed-active .newsfeed__header {
-      background: url('/images/steven-icon.svg') no-repeat 270px 10px/40px; } }
+      background: #252525 url('/images/steven-icon.svg') no-repeat 270px 10px/40px; } }
   .newsfeed-active .site-mask {
     visibility: visible;
     opacity: 0.5;
