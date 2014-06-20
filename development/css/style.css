@@ -418,8 +418,6 @@ html, body {
 .main-header__logo {
   float: left; }
 
-
-
 .team {
   padding: 50px 50px 50px 0; }
 
@@ -463,7 +461,6 @@ body {
   font-size: 16px;
   text-transform: uppercase; }
 
-
 .section__title.section__title--about:after {
   background: #fb5555; }
 .section__title.section__title--contact:after {
@@ -479,7 +476,6 @@ body {
 .main-navigation {
   float: right;
   margin-right: 60px; }
-
 
 .main-navigation__list-item {
   float: left; }
@@ -930,7 +926,7 @@ body {
   float: left;
   height: 100%;
   width: 300px;
-  overflow-x: scroll;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-top: 111px;
   top: -111px;
@@ -1193,7 +1189,6 @@ body {
   .team-member__portrait.team-member__portrait--max {
     background-image: url('/images/team-portrait-max.png');
     background-color: #696969; }
-
 
 .team-member__title {
   color: #ffac42;
