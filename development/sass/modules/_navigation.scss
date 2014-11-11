@@ -1,5 +1,11 @@
+
+/**
+ * Navigation
+ */
+
 .main-navigation {
 	float: right;
+	margin-right: 60px;
 }
 
 .main-navigation__list {
@@ -33,11 +39,11 @@
 	height: 30px;
 	display: block;
 	position: fixed;
-	bottom: 1em;
-	right: 1em;
+	bottom: 5px;
+	right: 10px;
 	background: url('/images/to-top-arrow.svg') no-repeat;
 	background-size: 60px;
-	z-index: 20;
+	z-index: 150;
 	opacity: 0;
 
 	transform: rotate(90deg);
@@ -62,15 +68,23 @@
 // =====================
 
 
-
 .js .main-navigation__toggle-button {
 	display: none;
 }
 
 @media (max-width:959px) {
 
+	.main-navigation {
+		float: left;
+		margin-left: 1em;
+	}
+
 	.js .main-navigation__list {
 		float: left;
+	}
+
+	.main-navigation__list-item a {
+		padding: 1.25em 0 1.25em 0.5em;
 	}
 
 	.js .main-navigation__toggle-button {
@@ -79,7 +93,7 @@
 		float: left;
 		width: 30px;
 		height: 30px;
-		margin: 0.75em 0.75em 0 0;
+		margin: 15px 0 0 0;
 		border: none;
 		background: url('/images/navigation-menu-sprite.svg') no-repeat;
 		background-size: 120px;
@@ -127,4 +141,10 @@
 
 	}
 
+}
+
+@media (max-width:640px) {
+	.js .main-navigation__list a {
+		font-size: 12px;
+	}
 }
