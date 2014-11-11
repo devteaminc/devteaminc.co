@@ -4,6 +4,7 @@ $(window).on('scroll', function(){
 
 	var currentPosition = $(window).scrollTop();
 
+
 	// ==============================================
 	// Intro Logo - Parallax Effect
 	// ==============================================
@@ -27,6 +28,7 @@ $(window).on('scroll', function(){
 		}
 
 	})();
+
 
 	// ==============================================
 	// Header Animation
@@ -57,6 +59,7 @@ $(window).on('scroll', function(){
 
 });
 
+
 // ==============================================
 // Responsive Menu
 // ==============================================
@@ -69,7 +72,7 @@ $(window).on('scroll', function(){
 	var buttonTemplate = '<a class="main-navigation__toggle-button" id="toggleNavMenu" tabindex="1"></a>';
 
 	// Insert our toggle button
-	menu.after( buttonTemplate );
+	menu.before( buttonTemplate );
 
 	// On click or keypress
 	$(document).on( 'click keypress', '#toggleNavMenu', function ( event ) {
@@ -91,6 +94,7 @@ $(window).on('scroll', function(){
 	});
 
 })();
+
 
 // ==============================================
 // Persistent Contact Information
@@ -257,106 +261,334 @@ $(window).on('scroll', function(){
 
 
 // ==============================================
-// Konami Code
+// Newsfeed Toggle
+// - Adds conditional CSS class, all animations
+//   are generated with CSS3 Transitions
 // ==============================================
 
+(function(){
 
-var Konami = function (callback) {
-	var konami = {
-		addEvent: function (obj, type, fn, ref_obj) {
-			if (obj.addEventListener)
-				obj.addEventListener(type, fn, false);
-			else if (obj.attachEvent) {
-				// IE
-				obj["e" + type + fn] = fn;
-				obj[type + fn] = function () {
-					obj["e" + type + fn](window.event, ref_obj);
-				}
-				obj.attachEvent("on" + type, obj[type + fn]);
-			}
-		},
-		input: "",
-		pattern: "38384040373937396665",
-		load: function (link) {
-			this.addEvent(document, "keydown", function (e, ref_obj) {
-				if (ref_obj) konami = ref_obj; // IE
-				konami.input += e ? e.keyCode : event.keyCode;
-				if (konami.input.length > konami.pattern.length)
-					konami.input = konami.input.substr((konami.input.length - konami.pattern.length));
-				if (konami.input == konami.pattern) {
-					konami.code(link);
-					konami.input = "";
-					e.preventDefault();
-					return false;
-				}
-			}, this);
-			this.iphone.load(link);
-		},
-		code: function (link) {
-			window.location = link
-		},
-		iphone: {
-			start_x: 0,
-			start_y: 0,
-			stop_x: 0,
-			stop_y: 0,
-			tap: false,
-			capture: false,
-			orig_keys: "",
-			keys: ["UP", "UP", "DOWN", "DOWN", "LEFT", "RIGHT", "LEFT", "RIGHT", "TAP", "TAP"],
-			code: function (link) {
-				konami.code(link);
-			},
-			load: function (link) {
-				this.orig_keys = this.keys;
-				konami.addEvent(document, "touchmove", function (e) {
-					if (e.touches.length == 1 && konami.iphone.capture == true) {
-						var touch = e.touches[0];
-						konami.iphone.stop_x = touch.pageX;
-						konami.iphone.stop_y = touch.pageY;
-						konami.iphone.tap = false;
-						konami.iphone.capture = false;
-						konami.iphone.check_direction();
-					}
-				});
-				konami.addEvent(document, "touchend", function (evt) {
-					if (konami.iphone.tap == true) konami.iphone.check_direction(link);
-				}, false);
-				konami.addEvent(document, "touchstart", function (evt) {
-					konami.iphone.start_x = evt.changedTouches[0].pageX;
-					konami.iphone.start_y = evt.changedTouches[0].pageY;
-					konami.iphone.tap = true;
-					konami.iphone.capture = true;
-				});
-			},
-			check_direction: function (link) {
-				x_magnitude = Math.abs(this.start_x - this.stop_x);
-				y_magnitude = Math.abs(this.start_y - this.stop_y);
-				x = ((this.start_x - this.stop_x) < 0) ? "RIGHT" : "LEFT";
-				y = ((this.start_y - this.stop_y) < 0) ? "DOWN" : "UP";
-				result = (x_magnitude > y_magnitude) ? x : y;
-				result = (this.tap == true) ? "TAP" : result;
+	$('#newsFeedToggle').on( 'click', function () {
 
-				if (result == this.keys[0]) this.keys = this.keys.slice(1, this.keys.length);
-				if (this.keys.length == 0) {
-					this.keys = this.orig_keys;
-					this.code(link);
-				}
-			}
+		$('body').toggleClass('newsfeed-active');
+
+	});
+
+	$('#siteMask').on( 'click', function () {
+
+		$('body').removeClass('newsfeed-active');
+
+	});
+
+})();
+
+
+// ==============================================
+// Konami Code
+// - (/scripts/plugins/konami-js/)
+// ==============================================
+
+(function(){
+
+	var easterEgg = new Konami(function() {
+
+		$(document.body).addClass('konami');
+
+	});
+
+})();
+
+
+// ==============================================
+// Last.fm Widget
+// - (/scripts/plugins/lastfmnowplaying/)
+// ==============================================
+
+(function(){
+
+	$('#lastFmWidget').lastfmNowPlaying({
+		apiKey: 'd8abda572c7cfcb1522dfe167d6cd8fb',
+		members: [
+			'colouryum',
+			'pshillier',
+			'seengee',
+			'silentdecay'
+		]
+	});
+
+})();
+
+
+// ==============================================
+// Slack Feed
+// ==============================================
+
+(function(){
+
+	// in Array function
+	// - For checking of string is in an array
+
+	function inArray ( array, query ) {
+		return array.indexOf( query ) > -1;
+	}
+
+	// Parse data to template
+
+	function addToTemplate( data ) {
+
+		// Check if more posts exists than loaded initially
+
+		if ( data.has_more ) {
+
+			$('#newsFeedStream').attr( 'data-has_more', 'true' );
+			$('#newsFeedStream').attr( 'data-last_ts', data.messages[ data.messages.length - 1].ts );
+
+		} else {
+
+			$('#newsFeedStream').attr( 'data-has_more', 'false' );
+
 		}
+
+		// Iterate through each message
+
+		$( data.messages ).each( function() {
+
+			// Save reference to each message
+			var message = this;
+
+			// Save reference to message keys
+			var messageKeys = Object.keys( message );
+
+			// Create blank attachment key array
+			var attachmentKeys = [];
+
+			// Create blank files key array
+			var fileKeys = [];
+
+			// If we have attachment keys, add them to the attachment key array (concat)
+			if ( inArray ( messageKeys, 'attachments' ) ) {
+				attachmentKeys = attachmentKeys.concat( Object.keys( message.attachments[0] ) );
+			}
+
+			// If we have file keys, add them to the file key array (concat)
+			if ( inArray ( messageKeys, 'file' ) ) {
+				fileKeys = fileKeys.concat( Object.keys( message.file ) );
+			}
+
+			// Prepare Data
+
+			var text                 = '';
+			var image                = '';
+			var video                = '';
+			var imageFile            = '';
+			var timeStamp            = '<time class="newsfeed-post__date" datetime="' + new Date( parseInt( message.ts, 10 ) * 1000 ) + '" >' + moment( parseInt( message.ts, 10 ) * 1000 ).fromNow() + '</time>'; // Slack uses Unix time stamps (seconds), JavaScript time should be in milliseconds
+			var groupPurpose         = '';
+			var groupJoin            = '';
+			var fileComment          = '';
+			var postCategory         = '';
+			var imageFileDescription = '';
+
+			// Set variables if post is a notification of group purpose or a member joining a group
+
+			if ( inArray ( messageKeys, 'subtype' ) ) {
+
+				if ( message.subtype === 'group_purpose' ) {
+					groupPurpose = true;
+				} else if ( message.subtype === 'group_join' ) {
+					groupJoin = true;
+				} else if ( message.subtype === 'file_comment' ) {
+					fileComment = true;
+				}
+
+			}
+
+			// Filter messages
+			
+			if ( !inArray ( messageKeys, 'hidden' ) && message.username !== 'github' && !groupPurpose && !groupJoin && !fileComment ) {
+
+				// Message text template (remove angled brackets added to hyperlinks by Slack)
+
+				if ( inArray ( messageKeys, 'text' ) ) {
+
+					// Create reference to the URL
+					var linkUrl =  message.text.match(/[^<>]+(?=>)/g);
+
+					text = '<p class="newsfeed-post__text">' + message.text.replace(/</g,'<a class="newsfeed-post__link" href="').replace(/>/g,'" target="_blank">' + linkUrl + '</a>').replace(/\\n/g, 'TEST') + '</p>';
+
+					if ( linkUrl ) {
+						postCategory = 'link';
+					} else {
+						postCategory = 'text';
+					}
+
+				}
+
+				// Message Attachement Image
+
+				if ( inArray ( attachmentKeys, 'image_url' ) ) {
+
+					var externalUrl = message.attachments[0].from_url;
+					var imageTitle  = message.attachments[0].title;
+
+					image = '<a class="newsfeed-post__imagelink" href="' + externalUrl + '" target="_blank" title="' + imageTitle + '"><img class="newsfeed-post__image" src="' + message.attachments[0].image_url + '"/ alt="' + imageTitle + '" ></a>';
+					postCategory = 'image';
+
+				}
+
+				// Message File - Image
+
+				if ( inArray ( fileKeys, 'mimetype' ) ) {
+
+					var mimeType = message.file.mimetype;
+
+					if ( mimeType.match(/image/g) ) {
+
+						imageFile = '<img src="' + message.file.thumb_360 + '" />';
+						postCategory = 'image';
+
+					}
+
+					// If post has a comment
+
+					if ( inArray ( fileKeys, 'initial_comment' ) ) {
+
+						imageFileDescription = '<p class="newsfeed-post__text newsfeed-post__text--file-comment">' + message.file.initial_comment.comment + '</p>';
+
+					}
+
+					text = '';
+
+				}
+
+				// Message Attachement Video
+
+				if ( inArray ( attachmentKeys, 'video_html' ) ) {
+					image = message.attachments[0].video_html;
+					postCategory = 'video';
+				}
+
+				// Remove hidden message timestamps
+
+				if ( inArray ( messageKeys, 'hidden' ) ) {
+					timeStamp = '';
+					text      = '';
+				}
+
+				// Prepare Template
+
+				var template =
+					'<div class="newsfeed-post newsfeed-post--' + postCategory + '">' +
+						'<header class="newsfeed-post__header">' +
+							'<i class="newsfeed-post__category-icon newsfeed-post__category-icon--' + postCategory + '"></i>' +
+							timeStamp +
+						'</header>' +
+						text +
+						image +
+						imageFile +
+						imageFileDescription +
+						video +
+					'</div>'
+				;
+
+				// Append template to news feed
+
+				$('#newsFeedStream').append( template );
+
+			}
+
+		});
+
 	}
 
-	typeof callback === "string" && konami.load(callback);
-	if (typeof callback === "function") {
-		konami.code = callback;
-		konami.load();
-	}
+	// AJAX call
+	// - Make a call to our Slack Messages API
 
-	return konami;
-};
+	$.ajax({
+		url: 'http://api.devteaminc.co/latest/',
+		method: 'GET',
+		dataType: 'jsonp',
+		success: function ( data ) {
 
-var easterEgg = new Konami(function() {
+			addToTemplate( data );
 
-    $(document.body).addClass('konami');
+			var currentPosition = $('#newsFeedStream').scrollTop() + $('#newsFeedStream').height();
+			var contentHeight = $('#newsFeedStream')[0].scrollHeight - 50;
 
-});
+			if ( currentPosition >= contentHeight ) {
+				
+				var getLastTimeStamp = $('#newsFeedStream').attr('data-last_ts');
+
+				$.ajax({
+					url: 'http://api.devteaminc.co/latest/' + getLastTimeStamp ,
+					method: 'GET',
+					dataType: 'jsonp'
+				}).done( function ( data ) {
+					addToTemplate( data );
+				});
+				
+			}
+
+		}
+	});
+
+	var scrolledPast = false;
+
+	$('#newsFeedStream').on( 'scroll', function () {
+
+		var currentPosition = $('#newsFeedStream').scrollTop() + $('#newsFeedStream').height();
+		var contentHeight = $('#newsFeedStream')[0].scrollHeight - 50;
+
+		if ( currentPosition >= contentHeight && !scrolledPast ) {
+
+			scrolledPast = true;
+			
+			var getLastTimeStamp = $('#newsFeedStream').attr('data-last_ts');
+
+			$.ajax({
+				url: 'http://api.devteaminc.co/latest/' + getLastTimeStamp ,
+				method: 'GET',
+				dataType: 'jsonp',
+				beforeSend: function () {
+					$('#newsFeedLoadingSpinner').addClass('active');
+				}
+			}).always( function () {
+
+				$('#newsFeedLoadingSpinner').removeClass('active');
+
+			}).done( function ( data ) {
+
+				addToTemplate( data );
+				scrolledPast = false;
+				emojify.run();
+
+			});
+
+		}
+
+	});
+
+
+})();
+
+
+// ==============================================
+// Emojify Configuration
+// - (/scripts/vendor/emojify/)
+// ==============================================
+
+(function(){
+
+	emojify.setConfig({
+
+		emoticons_enabled : true,
+		people_enabled    : true,
+		nature_enabled    : true,
+		objects_enabled   : true,
+		places_enabled    : true,
+		symobols_enabled  : true
+
+	});
+
+	emojify.run();
+
+})();

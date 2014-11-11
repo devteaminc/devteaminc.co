@@ -8,20 +8,22 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>DevTeam Inc.</title>
 		<meta name="description" content="DevTeam Inc.">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 		<link rel="author" href="humans.txt" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.gif" type="image/gif">
 		
-		<script src="scripts/vendor/modernizr-403f7abe.js"></script>
+		<script src="scripts/vendor/modernizr-214b37c2.js"></script>
 
 		<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
-		<link rel="stylesheet" href="css/style-67a96aeb.css"/>
+		<link rel="stylesheet" href="css/style-4d4d4c5c.css"/>
 
 	</head>
 	<body>
 	<a id="top" name="top"></a>
-		<div class="main-wrapper" role="banner">
-			<header class="main-header">
+		<div class="main-wrapper">
+			<header class="main-header" role="banner">
 
 				<a class="main-header__logo" href="/">DevTeam Inc.</a>
 
@@ -93,10 +95,10 @@
 
 					<li class="team-members__list-item team-members__list-item--max">
 						<i class="team-member__portrait team-member__portrait--max"></i>
-						<h3 class="team-member__name">Max</h3>
-						<p class="team-member__title">Developer</p>
-						<a class="team-member__contact team-member__contact--email" href="mailto:max@devteaminc.co">max@devteaminc.co</a>
-						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/maxsilvauk" target="_blank">&#64;maxsilvauk</a>
+						<h3 class="team-member__name">You?</h3>
+						<p class="team-member__title">Position Available</p>
+						<a class="team-member__contact team-member__contact--email" href="mailto:hello@devteaminc.co">hello@devteaminc.co</a>
+						<a class="team-member__contact team-member__contact--twitter" href="https://twitter.com/devteaminc" target="_blank">&#64;devteaminc</a>
 					</li>
 				</ul>
 
@@ -177,9 +179,35 @@
 			<a href="#top" id="scrollToTop" class="scroll-to-top"></a>
 		</div>
 
+		<aside class="newsfeed" id="newsFeed">
+
+			<header class="newsfeed__header">
+				<button class="newsfeed__toggle" id="newsFeedToggle">Toggle</button>
+				<h3 class="newsfeed__title">DevTeam Feed</h3>
+			</header>
+
+			<script type="text/template" id="lastFmWidget">
+			<div class="last-fm-widget" id="lastFmWidget">
+				<a class="last-fm-widget__track-details" href="{ track.url }" target="_blank">
+					<div class="last-fm-widget__imageholder"><img class="last-fm-widget__album-artwork" src="{ track.image.medium }" alt="Album Artwork"></div>
+					<marquee class="last-fm-widget__track-text"> Currently Playing: { track.artist } - { track.title }</marquee>
+				</a>
+			</div>
+			</script>
+			
+			<div class="newsfeed-stream" id="newsFeedStream">
+				
+			</div>
+
+			<div class="newsfeed-loading" id="newsFeedLoadingSpinner">Loading&hellip;</div>
+			
+		</aside>
+
+		<div id="siteMask" class="site-mask"></div>
+
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
-		<script src="scripts/scripts-c478f896.js"></script>
+		<script src="scripts/scripts-6bb3cebe.js"></script>
 
 		<script>
 			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

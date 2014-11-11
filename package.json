@@ -16,6 +16,7 @@
     "gulp-rimraf": "0.0.9",
     "run-sequence": "~0.3.6",
     "gulp-svgmin": "~0.4.3",
-    "gulp-livereload": "~1.2.0"
+    "gulp-livereload": "~1.2.0",
+    "gulp-cssmin": "~0.1.5"
   }
 }

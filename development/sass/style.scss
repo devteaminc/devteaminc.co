@@ -1,11 +1,12 @@
-// ==============================================
-// DevTeam Inc. Sass V1
-// ==============================================
+/**
+ * DevTeam Inc.
+ * - http://www.devteaminc.co/
+ */
 
 // ==============================================
 // Normalize, H5BP Defaults & Resets
 // ==============================================
-// 
+
 @import "modules/reset";
 
 // ==============================================
@@ -17,8 +18,10 @@
 @import "modules/typography";
 @import "modules/navigation";
 @import "modules/header";
-@import "modules/utilities";
 @import "modules/konami";
+@import "modules/newsfeed";
+@import "modules/newsfeed__stream";
+@import "modules/last-fm";
 
 // ==============================================
 // Sections
@@ -28,3 +31,9 @@
 @import "sections/team";
 @import "sections/about";
 @import "sections/contact";
+
+// ==============================================
+// Utilities
+// ==============================================
+
+@import "modules/utilities";

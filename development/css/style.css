@@ -1,3 +1,11 @@
+/**
+ * DevTeam Inc.
+ * - http://www.devteaminc.co/
+ */
+/**
+ * Resets
+ * - Normalize, HTML5 Boilerplate recommendations & misc resets
+ */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -378,6 +386,12 @@ a:focus {
   padding: 0;
   list-style: none; }
 
+/**
+ * Variables
+ */
+/**
+ * Structure
+ */
 .main-wrapper, .intro {
   float: left;
   width: 100%;
@@ -385,7 +399,8 @@ a:focus {
 
 .team, .about, .contact {
   float: left;
-  width: 100%; }
+  width: 100%;
+  box-sizing: border-box; }
 
 html, body {
   height: 100%; }
@@ -403,18 +418,19 @@ html, body {
 .main-header__logo {
   float: left; }
 
-
-
 .team {
-  padding: 50px 0; }
+  padding: 50px 50px 50px 0; }
 
 .about {
-  padding: 50px 0;
+  padding: 50px 50px 50px 0;
   background: #eaeaea; }
 
 .contact {
-  padding: 50px 0; }
+  padding: 50px 50px 50px 0; }
 
+/**
+ * Typography
+ */
 body {
   font-family: 'Varela Round', sans-serif;
   font-size: 16px;
@@ -441,6 +457,9 @@ body {
   text-transform: uppercase;
   margin: 0; }
 
+.newsfeed__title {
+  font-size: 16px;
+  text-transform: uppercase; }
 
 .section__title.section__title--about:after {
   background: #fb5555; }
@@ -451,9 +470,12 @@ body {
   .section__title {
     font-size: 48px; } }
 
+/**
+ * Navigation
+ */
 .main-navigation {
-  float: right; }
-
+  float: right;
+  margin-right: 60px; }
 
 .main-navigation__list-item {
   float: left; }
@@ -472,11 +494,11 @@ body {
   height: 30px;
   display: block;
   position: fixed;
-  bottom: 1em;
-  right: 1em;
+  bottom: 5px;
+  right: 10px;
   background: url('/images/to-top-arrow.svg') no-repeat;
   background-size: 60px;
-  z-index: 20;
+  z-index: 150;
   opacity: 0;
   transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -491,15 +513,20 @@ body {
   display: none; }
 
 @media (max-width: 959px) {
+  .main-navigation {
+    float: left;
+    margin-left: 1em; }
   .js .main-navigation__list {
     float: left; }
+  .main-navigation__list-item a {
+    padding: 1.25em 0 1.25em 0.5em; }
   .js .main-navigation__toggle-button {
     cursor: pointer;
     display: block;
     float: left;
     width: 30px;
     height: 30px;
-    margin: 0.75em 0.75em 0 0;
+    margin: 15px 0 0 0;
     border: none;
     background: url('/images/navigation-menu-sprite.svg') no-repeat;
     background-size: 120px; }
@@ -523,6 +550,10 @@ body {
     .js .main-navigation__list--visible a:hover, .js .main-navigation__list--visible a:focus {
       color: rgba(0, 0, 0, 0.3); } }
 
+/**
+ * Header
+ * - Main website header
+ */
 .main-header {
   transition: background ease-in-out 400ms; }
   .main-header.visible {
@@ -544,16 +575,6 @@ body {
 @media (max-width: 959px) {
   .main-header__logo {
     display: none; } }
-
-.cf:before, .cf:after {
-  content: " ";
-  display: table; }
-
-.cf:after {
-  clear: both; }
-
-.cf {
-  *zoom: 1; }
 
 @-webkit-keyframes tada {
   0% {
@@ -789,7 +810,276 @@ body {
 .konami .team-member__portrait.team-member__portrait--paul:hover {
   background-image: url('/images/team-portrait-paul-mex-fight.png'); }
 
+/**
+ * News Feed
+ * - Used for news feed module of website
+ */
+.newsfeed {
+  min-height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  width: 300px;
+  height: 100%;
+  background: #252525;
+  color: #fff;
+  padding: 112px 0 0;
+  transition: 200ms ease-in-out;
+  padding-left: 50px;
+  -webkit-transform: translate3d(300px, 0, 0);
+  -moz-transform: translate3d(300px, 0, 0);
+  –ms-transform: translate3d(300px, 0, 0);
+  transform: translate3d(300px, 0, 0); }
+
+.newsfeed__title {
+  margin: 15px 20px 15px 50px;
+  transition: 200ms ease-in-out;
+  opacity: 0.333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate3d(-165px, 40px, 0) rotate3d(0, 0, 1, -90deg);
+  -moz-transform: translate3d(-165px, 40px, 0) rotate3d(0, 0, 1, -90deg);
+  -ms-transform: translate3d(-165px, 40px, 0) rotate3d(0, 0, 1, -90deg);
+  transform: translate3d(-165px, 40px, 0) rotate3d(0, 0, 1, -90deg); }
+
+.newsfeed__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 #333;
+  background: url('/images/steven-icon.svg') no-repeat 250px 10px/40px;
+  background-color: #252525; }
+
+.newsfeed__toggle {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  padding: 0;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background: url('/images/to-top-arrow.svg') no-repeat 0 2px/50px;
+  transition: 200ms ease-in-out; }
+  .newsfeed__toggle:focus {
+    outline: none; }
+
+.site-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  visibility: hidden;
+  opacity: 0;
+  background: #000;
+  transition: 200ms ease-in-out; }
+
+.newsfeed-active {
+  -webkit-overflow-scrolling: touch; }
+  .newsfeed-active .scroll-to-top {
+    display: none; }
+  .newsfeed-active .newsfeed {
+    padding-left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  @media (max-width: 320px) {
+    .newsfeed-active .newsfeed {
+      width: 320px; }
+    .newsfeed-active .newsfeed__header {
+      background: #252525 url('/images/steven-icon.svg') no-repeat 270px 10px/40px; } }
+  .newsfeed-active .site-mask {
+    visibility: visible;
+    opacity: 0.5;
+    cursor: pointer; }
+  .newsfeed-active .newsfeed__title {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+    -moz-transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+    -ms-transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+    transform: translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg); }
+  .newsfeed-active .newsfeed__toggle {
+    -webkit-transform: rotate3d(0, 0, 1, -180deg);
+    -moz-transform: rotate3d(0, 0, 1, -180deg);
+    -ms-transform: rotate3d(0, 0, 1, -180deg);
+    transform: rotate3d(0, 0, 1, -180deg); }
+
+/**
+ * News Feed Stream
+ * - Styling for News Feed Stream (Slack API)
+ */
+.newsfeed-stream {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 300px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 111px;
+  top: -111px;
+  z-index: 10;
+  box-sizing: border-box; }
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@-ms-keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+.newsfeed-loading {
+  visibility: hidden;
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  background: #000;
+  text-align: center;
+  opacity: 0;
+  transition: ease-in-out 200ms opacity; }
+  .newsfeed-loading.active {
+    visibility: visible;
+    opacity: 0.8; }
+
+.newsfeed-post {
+  position: relative;
+  padding: 10px;
+  margin: 10px;
+  background: #303030;
+  border-radius: 3px;
+  -webkit-animation: fade-in 200ms linear;
+  -moz-animation: fade-in 200ms linear;
+  -ms-animation: fade-in 200ms linear;
+  animation: fade-in 200ms linear; }
+  .newsfeed-post img, .newsfeed-post iframe {
+    display: block;
+    max-width: 100%; }
+
+.newsfeed-post__header {
+  margin: 0 0 10px; }
+
+.newsfeed-post__date {
+  font-size: 12px;
+  color: #696969;
+  text-shadow: 0 1px 0 #000;
+  text-transform: capitalize; }
+
+.newsfeed-post__category-icon {
+  background: url('/images/feed-category-icons.png') no-repeat 0 0/auto 40px;
+  height: 20px;
+  width: 20px;
+  float: right; }
+  .newsfeed-post__category-icon.newsfeed-post__category-icon--text {
+    background-position: -20px 0; }
+  .newsfeed-post__category-icon.newsfeed-post__category-icon--image {
+    background-position: -40px 0; }
+  .newsfeed-post__category-icon.newsfeed-post__category-icon--video {
+    background-position: -60px 0; }
+
+.newsfeed-post__text {
+  font-size: 14px;
+  line-height: 1.5em;
+  margin: 0; }
+
+.newsfeed-post__text--file-comment {
+  margin: 10px 0 0; }
+
+.newsfeed-post__link {
+  display: block;
+  word-break: break-word;
+  color: #7d6ddb; }
+
+.newsfeed-post--video .newsfeed-post__text a, .newsfeed-post--image .newsfeed-post__text a {
+  display: none; }
+
+.emoji {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  max-width: none; }
+
+/**
+ * Sidebar - Last.fm
+ * - Used for the Last.fm sidebar module
+ */
+.last-fm-widget {
+  cursor: pointer;
+  float: left;
+  width: 100%;
+  position: absolute;
+  top: 52px;
+  left: 50px;
+  transition: 200ms ease-in-out;
+  z-index: 20; }
+  .newsfeed-active .last-fm-widget {
+    left: 0; }
+
+.last-fm-widget__track-details {
+  float: left;
+  width: 100%;
+  background: #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 #333; }
+
+.last-fm-widget__imageholder {
+  float: left;
+  width: 20%;
+  height: 60px;
+  background: #000 url('/images/last-fm-no-artwork.png') no-repeat center/contain;
+  overflow: hidden; }
+
+.last-fm-widget__album-artwork {
+  max-width: 100%; }
+
+.last-fm-widget__track-text {
+  float: right;
+  width: 80%;
+  font-size: 12px;
+  color: #696969;
+  text-transform: uppercase;
+  margin: 20px 0;
+  line-height: 20px; }
+
 .intro {
+  padding-right: 50px;
+  box-sizing: border-box;
   position: relative;
   background: linear-gradient(to bottom, #9ad4ea 30%, #c2e2c9 60%, #eed996 80%, #f16c5a 95%, #ed3764 100%) fixed center center;
   background-size: cover; }
@@ -829,7 +1119,7 @@ body {
   .section__title--intro {
     width: 200px;
     height: 95px;
-    margin-left: -100px;
+    margin-left: -125px;
     margin-top: -47.5px; } }
 
 .intro-illustration {
@@ -838,7 +1128,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%; }
-
 
 .intro-illustration__mountains {
   background: url('/images/intro-illustration-mountains.png') center;
@@ -898,9 +1187,8 @@ body {
     background-image: url('/images/team-portrait-chris.png');
     background-color: #9bf1d4; }
   .team-member__portrait.team-member__portrait--max {
-    background-image: url('/images/team-portrait-max.png');
+    background-image: url('/images/team-portrait-empty.png');
     background-color: #696969; }
-
 
 .team-member__title {
   color: #ffac42;
@@ -919,9 +1207,15 @@ body {
     color: #696969;
     outline: none; }
 
+@media (max-width: 659px) {
+  .team-members__list-item {
+    width: 100%; }
+  .team-member__portrait {
+    margin: 20px auto; } }
+
 .about {
   position: relative;
-  padding: 100px 0;
+  padding: 50px 50px 50px 0;
   margin: 100px 0; }
   .about:before {
     content: '';
@@ -1106,3 +1400,17 @@ body {
 @media (max-width: 959px) {
   .google-map {
     display: none; } }
+
+/**
+ * Utilities
+ * - Place misc utility classes here
+ */
+.cf:before, .cf:after {
+  content: " ";
+  display: table; }
+
+.cf:after {
+  clear: both; }
+
+.cf {
+  *zoom: 1; }

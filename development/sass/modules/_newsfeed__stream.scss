@@ -1,0 +1,159 @@
+
+/**
+ * News Feed Stream
+ * - Styling for News Feed Stream (Slack API)
+ */
+
+ // Newsfeed Posts Wrapper
+
+.newsfeed-stream {
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 300px;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	padding-top: 111px;
+	top: -111px;
+	z-index: 10;
+	box-sizing: border-box;
+}
+
+// Individual Posts
+
+@-webkit-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-moz-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-ms-keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+.newsfeed-loading {
+
+	visibility: hidden;
+	width: 100%;
+	padding: 1em;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 9999;
+	background: #000;
+	text-align: center;	
+	opacity: 0;
+	transition: ease-in-out $animation-medium opacity;
+
+	&.active {
+		visibility: visible;
+		opacity: 0.8;
+	}
+
+}
+
+.newsfeed-post {
+
+	position: relative;
+	padding: 10px;
+	margin: 10px;
+	background: $medium-dark-grey;
+	border-radius: 3px;
+	-webkit-animation: fade-in $animation-medium linear;
+	   -moz-animation: fade-in $animation-medium linear;
+	    -ms-animation: fade-in $animation-medium linear;
+	        animation: fade-in $animation-medium linear;
+
+	// Styling for images and iframes
+
+	img,
+	iframe {
+		display: block;
+		max-width: 100%;
+	}
+
+}
+
+.newsfeed-post__header {
+	margin: 0 0 10px;
+}
+
+// Post Date
+
+.newsfeed-post__date {
+	font-size: $small-font-size;
+	color: $medium-grey;
+	text-shadow: 0 1px 0 #000;
+	text-transform: capitalize;
+}
+
+// Post Category Icons
+
+.newsfeed-post__category-icon {
+
+	background: url('/images/feed-category-icons.png') no-repeat 0 0 / auto 40px;
+	height: 20px;
+	width: 20px;
+	float: right;
+
+	&.newsfeed-post__category-icon--text {
+		background-position: -20px 0;
+	}
+
+	&.newsfeed-post__category-icon--image {
+		background-position: -40px 0;
+	}
+
+	&.newsfeed-post__category-icon--video {
+		background-position: -60px 0;
+	}
+
+}
+
+// Post Text
+
+.newsfeed-post__text {
+	font-size: $small-medium-font-size;
+	line-height: 1.5em;
+	margin: 0;
+}
+
+.newsfeed-post__text--file-comment {
+	margin: 10px 0 0;
+}
+
+// Post Link (displaying within post text)
+
+.newsfeed-post__link {
+	display: block;
+	word-break: break-word;
+	color: $purple;
+}
+
+// Video / image post links
+// - For prevention of duplicate links
+
+.newsfeed-post--video .newsfeed-post__text a,
+.newsfeed-post--image .newsfeed-post__text a {
+	display :none;
+}
+
+// Emoji Styling
+
+.emoji {
+	height: 32px;
+	width: 32px;
+	display: inline-block;
+	max-width: none;
+}

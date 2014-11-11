@@ -54,7 +54,7 @@
 	}
 
 	&.team-member__portrait--max {
-		background-image: url('/images/team-portrait-max.png');
+		background-image: url('/images/team-portrait-empty.png');
 		background-color: $medium-grey;
 	}
 
@@ -85,5 +85,18 @@
 		color: $medium-grey;
 		outline: none;
 	}
+
+}
+
+@media (max-width: 659px) {
+
+	.team-members__list-item {
+		width: 100%;
+	}
+	
+	.team-member__portrait {
+		margin: 20px auto;
+	}
+
 
 }

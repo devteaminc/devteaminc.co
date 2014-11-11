@@ -13,3 +13,5 @@
 
 	 Chris: Designer and Frontend Developer
 	 Twitter: @colouryum
+
+	 Max: developer
