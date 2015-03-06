@@ -177,7 +177,7 @@ gulp.task( 'refreshBrowser', function () {
 	 * Refresh Browser
 	 */
 
-	var server = liveReload();
+	var server = liveReload({ start: true });
 
 	gulp.watch( config.path.dev.css + '/**/*' ).on('change', function( file ) {
 
