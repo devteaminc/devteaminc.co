@@ -25,6 +25,7 @@ var rimraf       = require('gulp-rimraf');
 var notify       = require('gulp-notify');
 var runSequence  = require('run-sequence');
 var liveReload   = require('gulp-livereload');
+var minifyHtml 	 = require('gulp-minify-html');
 
 
 /**
@@ -149,8 +150,7 @@ gulp.task( 'optimizeSvg', function () {
 
 });
 
-
-gulp.task( 'buildUsemin', function () {
+gulp.task('buildUsemin', function () {
 
 	/**
 	 * Gulp Task
@@ -158,14 +158,13 @@ gulp.task( 'buildUsemin', function () {
 	 * Help prevent caching issues, update paths, minify JS
 	 */
 
-	return gulp.src( config.path.dev.root + '/*.html' )
-		.pipe( usemin({
-			js: [ uglify(), rev() ],
-			css: [ autoprefixer( 'last 2 version', 'ie 7', 'ie 8', 'ie 9' ), minifyCss(), rev() ]
-		}))
-		.pipe( gulp.dest( config.path.build.root ))
-	;
-
+  return gulp.src( config.path.dev.root + '/*.html' )
+      .pipe(usemin({
+        css: [minifyCss(), 'concat'],
+        html: [minifyHtml({empty: true})],
+        js: [uglify(), rev()]
+      }))
+      .pipe( gulp.dest( config.path.build.root ));
 });
 
 
