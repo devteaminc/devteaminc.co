@@ -8,8 +8,9 @@
 }
 
 .team-members__list-item {
-	float: left;
-	width: 320px;
+	display: inline-block;
+	width: 24%;
+	margin: 0 3px;
 }
 
 @media (max-width: 959px) {
@@ -17,45 +18,41 @@
 		display: inline-block;
 		float: none;
 	}
+	.team-members__list-item--max{
+		margin-top: 0 !important;
+	}
 }
-
+.team-members__list-item--max{
+	text-align: center;
+	margin-top: 40px;
+}
 .team-member__portrait {
-	width: 280px;
-	height: 280px;
+	width: 220px;
+	height: 220px;
 	border-radius: 100%;
-	margin: 20px;
+	margin: 5px;
 	display: block;
 	background: $lighter-grey no-repeat;
-	background-size: 280px;
+	background-size: 220px;
 
 	&.team-member__portrait--paul {
-		background-image: url('/images/team-portrait-paul.png');
-		background-color: $orange;
+		background-image: url('/images/paul.png');
 	}
 
 	&.team-member__portrait--rob {
-		background-image: url('/images/team-portrait-rob.png');
-		background-color: $red;
-	}
-
-	&.team-member__portrait--mike {
-		background-image: url('/images/team-portrait-mike.png');
-		background-color: $purple;
+		background-image: url('/images/rob.png');
 	}
 
 	&.team-member__portrait--john {
-		background-image: url('/images/team-portrait-john.png');
-		background-color: $green;
+		background-image: url('/images/john.png');
 	}
 
-	&.team-member__portrait--chris {
-		background-image: url('/images/team-portrait-chris.png');
-		background-color: $aqua;
+	&.team-member__portrait--alan {
+		background-image: url('/images/alan.png');
 	}
 
 	&.team-member__portrait--max {
-		background-image: url('/images/team-portrait-empty.png');
-		background-color: $medium-grey;
+		background-image: url('/images/you.png');
 	}
 
 }

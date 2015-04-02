@@ -217,3 +217,14 @@
 	}
 
 }
+
+.fa-github-alt:before{
+	color: #E2DDD5;
+	font-size: 34px;
+	margin: 0 12px;
+	top: 9px;
+	position: relative;
+	&:hover{
+		color: #fff !important;
+	}
+}

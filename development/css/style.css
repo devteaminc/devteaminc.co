@@ -563,7 +563,7 @@ body {
 .main-header {
   transition: background ease-in-out 400ms; }
   .main-header.visible {
-    background: rgba(0, 0, 0, 0.1); }
+    background: rgba(0, 0, 0, 0.3); }
 
 .main-header__logo {
   height: 35px;
@@ -1161,40 +1161,39 @@ body {
   text-align: center; }
 
 .team-members__list-item {
-  float: left;
-  width: 320px; }
+  display: inline-block;
+  width: 24%;
+  margin: 0 3px; }
 
 @media (max-width: 959px) {
   .team-members__list-item {
     display: inline-block;
-    float: none; } }
+    float: none; }
+  .team-members__list-item--max {
+    margin-top: 0 !important; } }
+
+.team-members__list-item--max {
+  text-align: center;
+  margin-top: 40px; }
 
 .team-member__portrait {
-  width: 280px;
-  height: 280px;
+  width: 220px;
+  height: 220px;
   border-radius: 100%;
-  margin: 20px;
+  margin: 5px;
   display: block;
   background: #eaeaea no-repeat;
-  background-size: 280px; }
+  background-size: 220px; }
   .team-member__portrait.team-member__portrait--paul {
-    background-image: url('/images/team-portrait-paul.png');
-    background-color: #ffac42; }
+    background-image: url('/images/paul.png'); }
   .team-member__portrait.team-member__portrait--rob {
-    background-image: url('/images/team-portrait-rob.png');
-    background-color: #fb5555; }
-  .team-member__portrait.team-member__portrait--mike {
-    background-image: url('/images/team-portrait-mike.png');
-    background-color: #7d6ddb; }
+    background-image: url('/images/rob.png'); }
   .team-member__portrait.team-member__portrait--john {
-    background-image: url('/images/team-portrait-john.png');
-    background-color: #cae0a8; }
-  .team-member__portrait.team-member__portrait--chris {
-    background-image: url('/images/team-portrait-chris.png');
-    background-color: #9bf1d4; }
+    background-image: url('/images/john.png'); }
+  .team-member__portrait.team-member__portrait--alan {
+    background-image: url('/images/alan.png'); }
   .team-member__portrait.team-member__portrait--max {
-    background-image: url('/images/team-portrait-empty.png');
-    background-color: #696969; }
+    background-image: url('/images/you.png'); }
 
 .team-member__title {
   color: #ffac42;
@@ -1252,6 +1251,18 @@ body {
 @media (max-width: 430px) {
   .about p {
     padding: 0.5em 1em; } }
+
+.about-logos {
+  text-align: center;
+  margin-bottom: 60px !important;
+  margin-top: 30px !important; }
+  .about-logos a {
+    text-decoration: none;
+    margin: 0 20px; }
+
+@media (max-width: 959px) {
+  .about-logos a img {
+    margin-bottom: 30px; } }
 
 .contact-wrapper {
   max-width: 960px;
@@ -1406,6 +1417,15 @@ body {
 @media (max-width: 959px) {
   .google-map {
     display: none; } }
+
+.fa-github-alt:before {
+  color: #E2DDD5;
+  font-size: 34px;
+  margin: 0 12px;
+  top: 9px;
+  position: relative; }
+  .fa-github-alt:before:hover {
+    color: #fff !important; }
 
 /**
  * Utilities

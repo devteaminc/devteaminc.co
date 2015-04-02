@@ -206,7 +206,7 @@ gulp.task( 'watch', function () {
  * Default Task
  */
 
-gulp.task( 'default', [ 'compileSass', 'watch', 'refreshBrowser' ] );
+gulp.task( 'default', [ 'compileSass', 'watch', /*'refreshBrowser'*/ ] );
 
 
 gulp.task( 'build', function () {
