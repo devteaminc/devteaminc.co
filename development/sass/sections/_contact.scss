@@ -218,13 +218,24 @@
 
 }
 
+.fa-github-alt{
+	width: 55px;
+	height: 55px;
+	border-radius: 100%;
+	display: inline-block;
+	background: #9f9c90;
+}
+
 .fa-github-alt:before{
-	color: #E2DDD5;
+	// color: #E2DDD5;
 	font-size: 34px;
 	margin: 0 12px;
 	top: 9px;
 	position: relative;
+}
+.fa-github-alt{
+	color: #E2DDD5;
 	&:hover{
-		color: #fff !important;
+		color: #fff;
 	}
 }

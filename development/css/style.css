@@ -1212,7 +1212,7 @@ body {
     color: #696969;
     outline: none; }
 
-@media (max-width: 659px) {
+@media (max-width: 999px) {
   .team-members__list-item {
     width: 100%; }
   .team-member__portrait {
@@ -1418,14 +1418,23 @@ body {
   .google-map {
     display: none; } }
 
+.fa-github-alt {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  display: inline-block;
+  background: #9f9c90; }
+
 .fa-github-alt:before {
-  color: #E2DDD5;
   font-size: 34px;
   margin: 0 12px;
   top: 9px;
   position: relative; }
-  .fa-github-alt:before:hover {
-    color: #fff !important; }
+
+.fa-github-alt {
+  color: #E2DDD5; }
+  .fa-github-alt:hover {
+    color: #fff; }
 
 /**
  * Utilities
