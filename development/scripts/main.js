@@ -288,15 +288,15 @@ $(window).on('scroll', function(){
 // - (/scripts/plugins/konami-js/)
 // ==============================================
 
-(function(){
+// (function(){
 
-	var easterEgg = new Konami(function() {
+// 	var easterEgg = new Konami(function() {
 
-		$(document.body).addClass('konami');
+// 		$(document.body).addClass('konami');
 
-	});
+// 	});
 
-})();
+// })();
 
 
 // ==============================================
