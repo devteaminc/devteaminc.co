@@ -97,3 +97,85 @@
 
 
 }
+.video-wrapper{
+	width: 220px;
+	height: 220px;
+	-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
+	-webkit-transform: rotate(0.000001deg); 
+	-webkit-border-radius: 50%; 
+	-moz-border-radius: 50%;
+	border-radius: 50%; 
+	overflow: hidden; 
+}
+#video{
+	margin-left: -45px;
+	margin-top: -40px;
+	filter: url(#blackandwhite);
+}
+#snap, #startCamera{
+	opacity: 0;
+	margin-top: -50px;
+	background: rgba(222,142,25,0.5);
+	border: none;
+	position: absolute;
+	z-index: 999;
+	margin-left: -57px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	color: #fff;
+	font-style: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	transition: ease-in-out $animation-slow;
+	display: none;
+}
+#startCamera{
+	opacity: 1;
+	display: initial;
+	margin-top: -80px;
+	margin-left: -65px;
+	transition: ease-in-out $animation-slow;
+}
+.filter-btn{
+	position: absolute;
+	display: none;
+	width: 240px;
+	height: 220px;
+	background: transparent;
+	border: none;
+	margin-top: -220px;
+	margin-left: -120px;
+	transition: ease-in-out $animation-slow;
+}
+.filter-btn:focus, #snap{
+	outline: 0;
+}
+.filter-btn:after{
+	content: "\2190 Click to change filter";
+	color: #b4b4b4;
+	font-size: 16px;
+	font-family: 'Varela Round', sans-serif;
+	margin-left: 90px;
+	position: absolute;
+	width: 240px;
+	font-style: normal;
+	transition: ease-in-out $animation-slow;
+}
+@media (max-width: 680px){
+	.filter-btn:after{
+		content: "\2190 Tap to change filter";
+		transform: rotate(90deg);
+		transform-origin: left top 0;
+		margin-left: 118px;
+		margin-top: 22px;
+	}
+}
+#canvas{
+	pointer-events: none;
+	border-radius: 50%;
+	margin-left: -200px;
+	margin-top: -220px;
+	position: absolute;
+	margin-left: -110px;
+	opacity: 0;
+}
