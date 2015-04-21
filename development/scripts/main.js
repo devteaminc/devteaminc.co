@@ -592,3 +592,79 @@ $(window).on('scroll', function(){
 	emojify.run();
 
 })();
+
+//Webcam
+
+	// Put event listeners into place
+	window.addEventListener("DOMContentLoaded", function() {
+
+	// Grab elements, create settings, etc.
+	var canvas = document.getElementById("canvas"),
+	context = canvas.getContext("2d"),
+	video = document.getElementById("video"),
+	videoObj = { "video": true },
+	errBack = function(error) {
+		console.log("Video capture error: ", error.code); 
+	};
+	function startCamera() {
+	// Put video listeners into place
+	if(navigator.getUserMedia) { // Standard
+		navigator.getUserMedia(videoObj, function(stream) {
+			video.src = stream;
+			video.play();
+		}, errBack);
+	} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+		navigator.webkitGetUserMedia(videoObj, function(stream){
+			video.src = window.URL.createObjectURL(stream);
+			video.play();
+		}, errBack);
+	}
+	else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+		navigator.mozGetUserMedia(videoObj, function(stream){
+			video.src = window.URL.createObjectURL(stream);
+			video.play();
+		}, errBack);
+	}
+}
+// });
+//Trigger photo take
+// document.getElementById("snap").addEventListener("click", function() {
+// 	context.drawImage(video, -45, 0, 300, 220);
+// });
+ // Trigger starting the camera
+ document.getElementById("startCamera").addEventListener("click", function() {
+ 	startCamera();
+ 	document.getElementById("startCamera").style.display = 'none';
+ 	document.getElementById('filterBtn').style.display = 'initial';
+ });
+
+}, false);
+
+//Filters
+var video = document.querySelector('video'),
+button = document.querySelector('button.filter-btn'),
+current = document.querySelector('button span'),
+filters = ['noir','bluefill','convolve','inverse','convolve2', 'blackandwhite'],
+i = 0;
+
+video.style.webkitFilter='url(#blackandwhite)';
+video.style.mozFilter='url(#blackandwhite)';
+video.style.filter='url(#blackandwhite)';
+
+button.addEventListener('click',function(){
+
+	video.style.webkitFilter='url(#'+filters[i]+')';
+	video.style.mozFilter='url(#'+filters[i]+')';
+	video.style.filter='url(#'+filters[i]+')';
+
+	i++;
+
+	if (i>=filters.length) i=0;
+
+}, false);
+
+
+// $('.filter-btn').mouseover(function(){
+// 	$('#snap').css('opacity', '1');
+// 	$(this).css('opacity', '1');
+// });
