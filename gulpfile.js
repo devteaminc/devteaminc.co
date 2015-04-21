@@ -25,7 +25,7 @@ var rimraf       = require('gulp-rimraf');
 var notify       = require('gulp-notify');
 var runSequence  = require('run-sequence');
 var liveReload   = require('gulp-livereload');
-var minifyHtml 	 = require('gulp-minify-html');
+// var minifyHtml 	 = require('gulp-minify-html');
 
 
 /**
@@ -161,7 +161,7 @@ gulp.task('buildUsemin', function () {
   return gulp.src( config.path.dev.root + '/*.html' )
       .pipe(usemin({
         css: [minifyCss(), 'concat'],
-        html: [minifyHtml({empty: true})],
+        // html: [minifyHtml({empty: true})],
         js: [uglify(), rev()]
       }))
       .pipe( gulp.dest( config.path.build.root ));
